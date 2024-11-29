@@ -80,7 +80,7 @@ const Text_Search = () => {
       <h1>Text Search for Food</h1>
       <input
         type="text"
-        placeholder="Enter food name"
+        placeholder="Enter food name to search..."
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />
