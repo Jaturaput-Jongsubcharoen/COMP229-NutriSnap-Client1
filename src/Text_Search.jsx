@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const TextSearch = () => {
+const Text_Search = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [nutrients, setNutrients] = useState(null);
   const [savedEntries, setSavedEntries] = useState([]);
@@ -116,4 +116,4 @@ const TextSearch = () => {
   );
 };
 
-export default TextSearch;
+export default Text_Search;
