@@ -1,93 +1,98 @@
-import { useState, useEffect } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import axios from "axios"
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import Upload_Barcode from './Upload_Barcode';
+import AI_Image from './AI_Image';
+import Text_Search from './Text_Search';
+import Add_Item from './Add_Item';
+import History from './History/History';
+import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0);
-  const [array, setArray] = useState([]);
-  const [arrayMongoDB, setArrayMongoDB] = useState([]);
-
-  const fetchAPI = async () => {
-    try {
-        const response = await axios.get("http://localhost:8080/api");
-        setArray(response.data.fruits);
-        console.log("API Response:", response.data.fruits);
-    } catch (error) {
-        console.error("Error fetching data (API Response):", error);
-    }
-  };
-
-  const fetchAPIMongoDB = async () => {
-    try {
-        console.log("Backend URL MongoDB:", import.meta.env.VITE_BE_URL); // Debugging
-        const response = await fetch(`${import.meta.env.VITE_BE_URL}/apiMongo`);
-
-        if (!response.ok) {
-          throw new Error(`HTTP Error: ${response.status}`);
-        }
-
-        const data = await response.json();
-        console.log("API Mongo Response:", data);
-        setArrayMongoDB(data.items);
-    } catch (error) {
-        console.error("Error fetching data (API Mongo Response):", error);
-    }
-  };
-
-  useEffect(() => {
-      fetchAPI();
-      fetchAPIMongoDB();
-  }, []);
-
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <Router>
+      <div className="app-container">
+        <header className="Title-and-Button">
+          <h1 className="Title">MyFitnessPal</h1>
+          <button className="Logout-Button">Log Out</button>
+        </header>
+
+        <Routes>
+          {/* Main Page */}
+          <Route
+            path="/"
+            element={
+              <main className="main-container">
+                <h2 className="TrackMealsOptions">Track Your Meals</h2>
+
+                {/* Upload Options */}
+                <div className="UploadBarcode">
+                  <Link to="/Upload-Barcode">
+                    <button className="BarcodeImage">
+                      <i className="BarcodeButton"></i> Upload Barcode
+                    </button>
+                  </Link>
+                  <Link to="/AI-Image">
+                    <button className="UploadImagetoAI">
+                      <i className="AI_Image"></i> Upload Image for AI Suggestion
+                    </button>
+                  </Link>
+                  <Link to="/Text-Search">
+                    <button className="SearchTextforFood">
+                      <i className="Text_Search"></i> Text Search for Food
+                    </button>
+                  </Link>
+                </div>
+
+                {/* Meal Sections */}
+                <div className="Meal_Sections">
+                  <div className="Breakfast_Div">
+                    <h3>Breakfast</h3>
+                    <Link to="/Add-Item">
+                      <button className="BreakfastButton">Add Item</button>
+                    </Link>
+                  </div>
+                  <div className="Lunch_Div">
+                    <h3>Lunch</h3>
+                    <Link to="/Add-Item">
+                      <button className="LunchButton">Add Item</button>
+                    </Link>
+                  </div>
+                  <div className="Dinner_Div">
+                    <h3>Dinner</h3>
+                    <Link to="/Add-Item">
+                      <button className="DinnerButton">Add Item</button>
+                    </Link>
+                  </div>
+                  <div className="Snacks_Div">
+                    <h3>Snacks</h3>
+                    <Link to="/Add-Item">
+                      <button className="SnacksButton">Add Item</button>
+                    </Link>
+                  </div>
+
+                  {/* History Button | Mac */}
+                  <div className="History_Div" style={{ marginTop: '20px' }}>
+                    <h3>View History</h3>
+                    <Link to="/History">
+                      <button className="HistoryButton">Go to History</button>
+                    </Link>
+                  </div>
+
+                </div>
+              </main>
+            }
+          />
+
+          {/* Pages */}
+          <Route path="/Upload-Barcode" element={<Upload_Barcode />} />
+          <Route path="/AI-Image" element={<AI_Image />} />
+          <Route path= "/Text-Search" element={<Text_Search/>}/>
+          <Route path="/Add-Item" element={<Add_Item />} />
+          <Route path="/History" element={<History />} /> {/* History Route */}
+        </Routes>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-        {
-          array.map((fruit, index) => (
-            <div key={index}>
-              <p>{fruit}</p>
-              <br></br>
-            </div>
-          ))
-        }
-        {
-          arrayMongoDB &&
-          arrayMongoDB.length > 0 &&
-          arrayMongoDB.map((item, index) => (
-            <div key={item._id || index}>
-              <p><strong>Name:</strong> {item.name}</p>
-              <p><strong>Calories:</strong> {item.Calories}</p>
-              <p><strong>Protein:</strong> {item.Protein}</p>
-              <p><strong>Fat:</strong> {item.Fat}</p>
-              <p><strong>Carbohydrates:</strong> {item.Carbohydrates}</p>
-              <br />
-            </div>
-          ))
-        }
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </Router>
+  );
 }
 
-export default App
+export default App;
