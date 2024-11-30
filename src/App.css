@@ -1,127 +1,42 @@
-/* General App Container */
-[name="app-container"] {
-  font-family: 'Roboto', sans-serif;
-  background-color: #f3f4f6;
-  padding: 5rem;
-  max-width: 800px;
-  margin: auto;
-}
-/* Header */
-.Title-and-Button {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 16px 0;
-}
-
-.Title {
-  font-size: 1.5rem; 
-  font-weight: bold; 
-  color: #2563eb; 
-  margin-left: auto;
-}
-
-.Logout-Button {
-  background-color: #2563eb; /* Tailwind's bg-blue-600 */
-  color: rgb(16, 15, 15);
-  padding: 8px 16px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 0.875rem; /* Tailwind's text-sm */
-  transition: background-color 0.2s ease;
-  margin-right: auto;
-}
-
-.Logout-Button:hover {
-  background-color: #1e40af; /* Tailwind's hover:bg-blue-700 */
-}
-
-/* Main Container */
-.main-container {
-  background-color: white; /* Tailwind's bg-white */
-  padding: 24px; /* Tailwind's p-6 */
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Tailwind's shadow-md */
-}
-
-.TrackMealsOptions {
-  font-size: 1.25rem; /* Tailwind's text-xl */
-  font-weight: 600; /* Tailwind's font-semibold */
-  margin-bottom: 16px;
-  color: #181919; /* Tailwind's mb-4 */
-}
-
-/* Upload Options */
-.UploadBarcode {
-  display: flex;
-  gap: 16px; /* Tailwind's space-x-4 */
-  margin-bottom: 24px; /* Tailwind's mb-6 */
-}
-
-.BarcodeImage,
-.UploadImagetoAI {
-  flex: 1;
-  background-color: #22c55e; /* Tailwind's bg-green-500 */
-  color: white;
-  padding: 12px 16px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 0.875rem; /* Tailwind's text-sm */
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
   text-align: center;
-  transition: background-color 0.2s ease;
 }
 
-.BarcodeImage:hover {
-  background-color: #15803d; /* Tailwind's hover:bg-green-600 */
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
-.UploadImagetoAI {
-  background-color: #a855f7; /* Tailwind's bg-purple-500 */
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
-.UploadImagetoAI:hover {
-  background-color: #6b21a8; /* Tailwind's hover:bg-purple-600 */
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
 }
 
-/* Meal Sections */
-.Meal_Sections {
-  display: flex;
-  flex-direction: column;
-  gap: 16px; /* Tailwind's space-y-4 */
+.card {
+  padding: 2em;
 }
 
-.Breakfast_Div,
-.Lunch_Div,
-.Dinner_Div,
-.Snacks_Div {
-  background-color: #181919; /* Tailwind's bg-gray-50 */
-  padding: 16px;
-  border-radius: 8px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); /* Tailwind's shadow-sm */
-}
-
-h3 {
-  font-size: 1.125rem; /* Tailwind's text-lg */
-  font-weight: 500; /* Tailwind's font-medium */
-}
-
-.BreakfastButton,
-.LunchButton,
-.DinnerButton,
-.SnacksButton {
-  margin-top: 8px; /* Tailwind's mt-2 */
-  background-color: #2563eb; /* Tailwind's bg-blue-500 */
-  color: white;
-  padding: 6px 12px;
-  border-radius: 8px;
-  font-size: 0.875rem; /* Tailwind's text-sm */
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-}
-
-.BreakfastButton:hover,
-.LunchButton:hover,
-.DinnerButton:hover,
-.SnacksButton:hover {
-  background-color: #1e40af; /* Tailwind's hover:bg-blue-600 */
+.read-the-docs {
+  color: #888;
 }
