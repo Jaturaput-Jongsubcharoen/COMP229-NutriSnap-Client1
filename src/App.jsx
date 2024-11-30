@@ -41,7 +41,7 @@ function App() {
 
   useEffect(() => {
       fetchAPI();
-      fetchAPIMongoDB();
+
   }, []);
 
 
@@ -55,21 +55,10 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-      <h1>Hello! This is Jaturaput</h1>
+      <h1>Hello! This is Main Branch</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
 
-        {/*-------------------------------------------------------------*/}
-        <button onClick={fetchAPIMongoDB}>
-          Fetch MongoDB Data
-        </button>
-        {/*-------------------------------------------------------------*/}
-
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+        <h2>Frist, This data is coming from a 'Hardcoded data' defined in the server.js file</h2>
         {
           array.map((fruit, index) => (
             <div key={index}>
@@ -79,6 +68,12 @@ function App() {
           ))
         }
 
+        <h2>Second, Please click the button. These data will come from MongoDB</h2>
+        {/*-------------------------------------------------------------*/}
+        <button onClick={fetchAPIMongoDB}>
+          Fetch MongoDB Data
+        </button>
+        {/*-------------------------------------------------------------*/}
         {
           showMongoDBData &&
           arrayMongoDB &&
@@ -94,7 +89,7 @@ function App() {
             </div>
           ))
         }
-        
+
       </div>
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
