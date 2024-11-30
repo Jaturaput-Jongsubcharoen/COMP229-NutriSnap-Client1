@@ -8,6 +8,8 @@ function App() {
   const [count, setCount] = useState(0);
   const [array, setArray] = useState([]);
   const [arrayMongoDB, setArrayMongoDB] = useState([]);
+  const [showMongoDBData, setShowMongoDBData] = useState(false);
+
 
   const fetchAPI = async () => {
     try {
@@ -31,6 +33,7 @@ function App() {
         const data = await response.json();
         console.log("API Mongo Response:", data);
         setArrayMongoDB(data.items);
+        setShowMongoDBData(true); // Show the data
     } catch (error) {
         console.error("Error fetching data (API Mongo Response):", error);
     }
@@ -75,8 +78,9 @@ function App() {
             </div>
           ))
         }
-        
+
         {
+          showMongoDBData &&
           arrayMongoDB &&
           arrayMongoDB.length > 0 &&
           arrayMongoDB.map((item, index) => (
@@ -90,6 +94,7 @@ function App() {
             </div>
           ))
         }
+        
       </div>
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
