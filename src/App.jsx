@@ -8,6 +8,46 @@ import History from './History/History';
 import './App.css';
 
 function App() {
+<<<<<<< Updated upstream
+=======
+  const [count, setCount] = useState(0);
+  const [array, setArray] = useState([]);
+  const [arrayMongoDB, setArrayMongoDB] = useState([]);
+
+  const fetchAPI = async () => {
+    try {
+        const response = await axios.get("http://localhost:8080/api");
+        setArray(response.data.fruits);
+        console.log("API Response:", response.data.fruits);
+    } catch (error) {
+        console.error("Error fetching data (API Response):", error);
+    }
+  };
+  
+  const fetchAPIMongoDB = async () => {
+    try {
+        console.log("Backend URL MongoDB:", import.meta.env.VITE_BE_URL); // Debugging
+        const response = await fetch(`${import.meta.env.VITE_BE_URL}/apiMongo`);
+
+        if (!response.ok) {
+          throw new Error(`HTTP Error: ${response.status}`);
+        }
+
+        const data = await response.json();
+        console.log("API Mongo Response:", data);
+        setArrayMongoDB(data.items);
+    } catch (error) {
+        console.error("Error fetching data (API Mongo Response):", error);
+    }
+  };
+
+  useEffect(() => {
+      fetchAPI();
+      fetchAPIMongoDB();
+  }, []);
+
+
+>>>>>>> Stashed changes
   return (
     <Router>
       <div className="app-container">
