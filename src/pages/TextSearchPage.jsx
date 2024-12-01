@@ -12,7 +12,7 @@ const TextSearchPage = () => {
 
   const fetchSavedEntries = async () => {
     try {
-      const response = await fetch("http://localhost:5000/nutrients");
+      const response = await fetch(`${import.meta.env.VITE_BE_URL}/nutrients`);
       if (!response.ok) {
         throw new Error(`Failed to fetch saved entries: ${response.status}`);
       }
@@ -28,8 +28,8 @@ const TextSearchPage = () => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "x-app-id": import.meta.env.NUTRITIONIX_APP_ID, 
-        "x-app-key": import.meta.env.NUTRITIONIX_API_KEY,
+        "x-app-id": import.meta.env.VITE_NUTRITIONIX_APP_ID, 
+        "x-app-key": import.meta.env.VITE_NUTRITIONIX_API_KEY,
       },
       body: JSON.stringify({ query: searchTerm }),
     };
@@ -59,7 +59,7 @@ const TextSearchPage = () => {
 
   const saveToDatabase = async (foodData) => {
     try {
-      const response = await fetch("http://localhost:5000/nutrients", {
+      const response = await fetch(`${import.meta.env.VITE_BE_URL}/nutrients`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
