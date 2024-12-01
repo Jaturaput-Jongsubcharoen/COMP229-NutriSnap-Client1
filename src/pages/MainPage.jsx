@@ -37,15 +37,17 @@ function MainPage({ array, arrayMongoDB, showMongoDBData, fetchAPIMongoDB }) {
             </div>
             
             <div className="container-row">
-                <h1>Nutri-Kcal</h1>
-                <button onClick={handleLoginPageClick}>Login</button>
-                <button>Logout</button>
+                <div className="container-row3">
+                    <h1>Nutri-Kcal</h1>
+                    <button className="login-logout-button" onClick={handleLoginPageClick}>Login</button>
+                    <button className="login-logout-button">Logout</button>
+                </div>
             </div>
             <br/>
             <div className="container-row">
                 <div className="container-column">
                     <div className="decorate-main-page1">
-                        <p>Track Your Meals</p>
+                        <p className="track-meals-text">Track Your Meals</p>
                         <br/>
 
                         <div className="container-row">
