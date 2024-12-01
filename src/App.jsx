@@ -30,19 +30,20 @@ function App() {
 
   const fetchAPIMongoDB = async () => {
     try {
-      console.log('Backend URL MongoDB:', import.meta.env.VITE_BE_URL); // Debugging
-      const response = await fetch(`${import.meta.env.VITE_BE_URL}/apiMongo`);
+        console.log(import.meta.env);
+        console.log('VITE_BE_URL:', import.meta.env.VITE_BE_URL); // Debugging
 
-      if (!response.ok) {
-        throw new Error(`HTTP Error: ${response.status}`);
-      }
+        const response = await fetch(`${import.meta.env.VITE_BE_URL}/apiMongo`);
+        if (!response.ok) {
+            throw new Error(`HTTP Error: ${response.status}`);
+        }
 
-      const data = await response.json();
-      console.log('API Mongo Response:', data);
-      setArrayMongoDB(data.items);
-      setShowMongoDBData(true); // Show the data
+        const data = await response.json();
+        console.log('API Mongo Response:', data);
+        setArrayMongoDB(data.items);
+        setShowMongoDBData(true);
     } catch (error) {
-      console.error('Error fetching data (API Mongo Response):', error);
+        console.error('Error fetching data (API Mongo Response):', error);
     }
   };
 
