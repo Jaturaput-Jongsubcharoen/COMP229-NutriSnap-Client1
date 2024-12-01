@@ -10,6 +10,7 @@ import HistoryPage from './pages/HistoryPage';
 import LoginPage from './pages/LoginPage'; 
 import AddItemPage from './pages/AddItemPage';
 import BarcodePage from './pages/BarcodePage';
+import TextSearchPage from './pages/TextSearchPage';
 
 function App() {
   const [array, setArray] = useState([]);
@@ -76,6 +77,8 @@ function App() {
         <Route path="/add-item" element={<AddItemPage />} />
 
         <Route path="/barcode" element={<BarcodePage />} />
+
+        <Route path="/text-search" element={<TextSearchPage />} />
       </Routes>
     </Router>
   );

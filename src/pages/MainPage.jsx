@@ -28,6 +28,10 @@ function MainPage({ array, arrayMongoDB, showMongoDBData, fetchAPIMongoDB }) {
         navigate('/add-item'); // Navigate to the Add Item Page
     };
 
+    const handleTextSearchforFood = () => {
+        navigate('/text-search'); // Navigate to the Text Search for Food Page
+    };
+
     return (
         <div>
             <div className="container-row">
@@ -54,7 +58,7 @@ function MainPage({ array, arrayMongoDB, showMongoDBData, fetchAPIMongoDB }) {
                             <div className="container-row1">
                                 <button className="green-button" onClick={handleFetchBarcodePageClick}>Upload Barcode</button>
                                 <button className="purple-button" onClick={handlePredictImageClick}>Upload Image for AI Suggestion</button>
-                                <button className="black-button">Text Search for Food</button>
+                                <button className="black-button" onClick={handleTextSearchforFood}>Text Search for Food</button>
                             </div>
                         </div>
                         <br/>
