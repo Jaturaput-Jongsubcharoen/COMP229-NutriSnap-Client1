@@ -1,0 +1,100 @@
+/*Jaturaput: please let me know before you are about to change*/
+.decorate-main-page1 {
+    background-color: white; 
+    border-radius: 8px; 
+    padding: 20px; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    margin: 20px;
+  }
+  
+  .container-row1 {
+    display: flex; 
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+  }
+  
+  .decorate-row2 {
+    background-color: black; 
+    color: white;
+    padding: 15px;
+    border-radius: 8px; 
+    margin: 10px 0;
+    width: 100%;
+  }
+  
+  .container-row3  {
+    color: white;
+    display: flex; 
+    gap: 40px;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+  }
+  
+  .track-meals-text {
+    font-weight: bold; 
+    font-size: 18px;
+    color: #000;
+    text-align: left; 
+  }
+  /*----------------------------------*/
+  .black-button {
+    background-color: black; 
+    color: white; 
+    border: none; 
+    padding: 10px 20px; 
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  .black-button:hover {
+    background-color: #333; 
+  }
+  
+  .purple-button {
+    background-color: rgb(114, 18, 141);
+    color: white;
+    border: none; 
+    padding: 10px 20px; 
+    border-radius: 5px;
+    cursor: pointer; 
+    font-size: 16px; 
+    transition: background-color 0.3s ease; 
+  }
+  .purple-button:hover {
+    background-color: darkviolet; 
+  }
+  
+  .green-button {
+    background-color: rgb(45, 234, 45); 
+    color: white; 
+    border: none; 
+    padding: 10px 20px; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    font-size: 16px; 
+    transition: background-color 0.3s ease; 
+  }
+  
+  .green-button:hover {
+    background-color: darkgreen;
+  }
+  
+  .login-logout-button {
+    padding: 5px 15px; 
+    background-color: #929292;
+    color: white; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    font-size: 14px; 
+    transition: background-color 0.3s ease; 
+  }
+  .login-logout-button:hover {
+    background-color: #4e4e4e; 
+  }
+  
+  /*----------------------------------*/

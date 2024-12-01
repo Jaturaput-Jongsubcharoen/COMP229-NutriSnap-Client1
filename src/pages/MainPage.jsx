@@ -1,6 +1,7 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useNavigate } from 'react-router-dom';
 import logo1 from '../images/logo1.png';
+import '../styles/DecorateMainPage.css';
 
 function MainPage({ array, arrayMongoDB, showMongoDBData, fetchAPIMongoDB }) {
 
@@ -29,7 +30,6 @@ function MainPage({ array, arrayMongoDB, showMongoDBData, fetchAPIMongoDB }) {
 
     return (
         <div>
-
             <div className="container-row">
                 <div>
                     <img src={logo1} className="logo" alt="Custom Logo 1" />
