@@ -28,8 +28,8 @@ const TextSearchPage = () => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "x-app-id": "987883de", // Replace with your Nutritionix App ID
-        "x-app-key": "6b96a1f0e21ec3734ee14f5832315d5f", // Replace with your Nutritionix API Key
+        "x-app-id": import.meta.env.NUTRITIONIX_APP_ID, 
+        "x-app-key": import.meta.env.NUTRITIONIX_API_KEY,
       },
       body: JSON.stringify({ query: searchTerm }),
     };
