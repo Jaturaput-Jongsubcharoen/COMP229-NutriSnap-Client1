@@ -20,37 +20,67 @@ function MainPage({ array, arrayMongoDB, showMongoDBData, fetchAPIMongoDB }) {
     };
 
     const handleFetchBarcodePageClick = () => {
-        navigate('/barcode'); // Example: Navigate to Barcode Page
+        navigate('/barcode'); // Navigate to Barcode Page
+    };
+
+    const handleAddItemPageClick = () => {
+        navigate('/add-item'); // Navigate to the Add Item Page
     };
 
     return (
         <div>
+
             <div className="container-row">
                 <div>
                     <img src={logo1} className="logo" alt="Custom Logo 1" />
                 </div>
             </div>
-            <br/>
-
+            
             <div className="container-row">
-                <button onClick={handlePredictImageClick}>AI Predict Image Page</button>
-            </div>
-            <br />
+                <h1>Nutri-Kcal</h1>
+                <button>
+                    Logout
+                </button>
 
-            <div className="container-row">
-                <button onClick={handleHistoryPageClick}>History Page</button>
-            </div>
-            <br />
-
-            <div className="container-row">
-                <button onClick={handleLoginPageClick}>Login Page</button>
-            </div>
-            <br />
-
-            <div className="container-row">
-                <button onClick={handleFetchBarcodePageClick}>Fetch Barcode Page</button>
             </div>
             <br/>
+            <div className="container-row">
+                <div className="container-column">
+                    <div className="decorate-main-page1">
+                        <p>Track Your Meals</p>
+                        <br/>
+
+                        <div className="container-row">
+                            <button onClick={handleFetchBarcodePageClick}>Upload Barcode</button>
+                            <button >Upload Image for AI Suggestion</button>
+                            <button >Text Search for Food</button>
+                        </div>
+                        <br/>
+
+                        <div className="container-row">
+                            <div className="decorate-row">
+                                <button onClick={handlePredictImageClick}>AI Predict Image Page</button>
+                            </div>
+                        </div>
+                        <br />
+
+                        <div className="container-row">
+                            <button onClick={handleHistoryPageClick}>History Page</button>
+                        </div>
+                        <br />
+
+                        <div className="container-row">
+                            <button onClick={handleLoginPageClick}>Login Page</button>
+                        </div>
+                        <br />
+
+                        <div className="container-row">
+                            <button onClick={handleAddItemPageClick}>Add Item Page</button>
+                        </div>
+                        <br />
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }

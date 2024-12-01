@@ -23,7 +23,7 @@
 }
 
 /*----------------------------------*/
-/*Jaturaput*/
+/*Jaturaput Please do not change it*/
 .container-row {
   display: flex;
   flex-direction: row;
@@ -32,5 +32,14 @@
 .container-column {
   display: flex;
   flex-direction: column;
+}
+/*----------------------------------*/
+/*Jaturaput*/
+.decorate-main-page1 {
+  background-color: white; 
+  border-radius: 8px; 
+  padding: 20px; 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+  margin: 20px;
 }
 /*----------------------------------*/
