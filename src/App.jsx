@@ -4,12 +4,12 @@ import axios from 'axios';
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import MainPage from './page/MainPage';
-import PredictImagePage from './page/PredictImagePage'; 
-import HistoryPage from './page/HistoryPage'; 
-import LoginPage from './page/LoginPage'; 
-import AddItemPage from './page/AddItemPage';
-import BarcodePage from './page/BarcodePage';
+import MainPage from './pages/MainPage';
+import PredictImagePage from './pages/PredictImagePage'; 
+import HistoryPage from './pages/HistoryPage'; 
+import LoginPage from './pages/LoginPage'; 
+import AddItemPage from './pages/AddItemPage';
+import BarcodePage from './pages/BarcodePage';
 
 function App() {
   const [array, setArray] = useState([]);

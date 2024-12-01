@@ -6,12 +6,13 @@
 }
 
 .logo {
-  height: 3em;
+  height: 10em;
   padding: 1.5em;
   will-change: filter;
   transition: filter 300ms;
   justify-content: center; /* horizontally */
   align-items: center; /* vertically */
+  filter: invert(1) brightness(2); 
 }
 
 .card {
@@ -23,7 +24,7 @@
 }
 
 /*----------------------------------*/
-/*Jaturaput Please do not change it*/
+/*Jaturaput: Please do not change it*/
 .container-row {
   display: flex;
   flex-direction: row;
@@ -34,7 +35,7 @@
   flex-direction: column;
 }
 /*----------------------------------*/
-/*Jaturaput*/
+/*Jaturaput: please let me know before you are about to change*/
 .decorate-main-page1 {
   background-color: white; 
   border-radius: 8px; 
@@ -42,4 +43,65 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
   margin: 20px;
 }
+
+.container-row1 {
+  display: flex; 
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.decorate-row2 {
+  background-color: black; 
+  color: white;
+  padding: 15px;
+  border-radius: 8px; 
+  margin: 10px 0;
+  width: 100%;
+}
+
+.black-button {
+  background-color: black; 
+  color: white; 
+  border: none; 
+  padding: 10px 20px; 
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+.black-button:hover {
+  background-color: #333; 
+}
+
+.purple-button {
+  background-color: rgb(114, 18, 141);
+  color: white;
+  border: none; 
+  padding: 10px 20px; 
+  border-radius: 5px;
+  cursor: pointer; 
+  font-size: 16px; 
+  transition: background-color 0.3s ease; 
+}
+.purple-button:hover {
+  background-color: darkviolet; 
+}
+
+.green-button {
+  background-color: rgb(45, 234, 45); 
+  color: white; 
+  border: none; 
+  padding: 10px 20px; 
+  border-radius: 5px; 
+  cursor: pointer; 
+  font-size: 16px; 
+  transition: background-color 0.3s ease; 
+}
+
+.green-button:hover {
+  background-color: darkgreen;
+}
+
 /*----------------------------------*/

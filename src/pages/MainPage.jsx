@@ -38,10 +38,8 @@ function MainPage({ array, arrayMongoDB, showMongoDBData, fetchAPIMongoDB }) {
             
             <div className="container-row">
                 <h1>Nutri-Kcal</h1>
-                <button>
-                    Logout
-                </button>
-
+                <button onClick={handleLoginPageClick}>Login</button>
+                <button>Logout</button>
             </div>
             <br/>
             <div className="container-row">
@@ -51,31 +49,29 @@ function MainPage({ array, arrayMongoDB, showMongoDBData, fetchAPIMongoDB }) {
                         <br/>
 
                         <div className="container-row">
-                            <button onClick={handleFetchBarcodePageClick}>Upload Barcode</button>
-                            <button >Upload Image for AI Suggestion</button>
-                            <button >Text Search for Food</button>
+                            <div className="container-row1">
+                                <button className="green-button" onClick={handleFetchBarcodePageClick}>Upload Barcode</button>
+                                <button className="purple-button" onClick={handlePredictImageClick}>Upload Image for AI Suggestion</button>
+                                <button className="black-button">Text Search for Food</button>
+                            </div>
                         </div>
                         <br/>
 
                         <div className="container-row">
-                            <div className="decorate-row">
-                                <button onClick={handlePredictImageClick}>AI Predict Image Page</button>
+                            <div className="decorate-row2">
+                                <p>History</p>
+                                <br />
+                                <button onClick={handleHistoryPageClick}>History Page</button>
                             </div>
                         </div>
                         <br />
 
                         <div className="container-row">
-                            <button onClick={handleHistoryPageClick}>History Page</button>
-                        </div>
-                        <br />
-
-                        <div className="container-row">
-                            <button onClick={handleLoginPageClick}>Login Page</button>
-                        </div>
-                        <br />
-
-                        <div className="container-row">
-                            <button onClick={handleAddItemPageClick}>Add Item Page</button>
+                            <div className="decorate-row2">
+                                <p>Add Item</p>
+                                <br />
+                                <button onClick={handleAddItemPageClick}>Add Item Page</button>
+                            </div>
                         </div>
                         <br />
                     </div>
