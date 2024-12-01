@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
-const genAI = new GoogleGenerativeAI("AIzaSyBjbMiCGWlR2MbgKOH14uGKpb6VHC8H13o");// This is a fake api key which doesn't work
+const genAI = new GoogleGenerativeAI("AI");// This is a fake api key, replace with real one
 const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
 function App() {
