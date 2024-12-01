@@ -133,5 +133,12 @@
 .login-logout-button:hover {
   background-color: #4e4e4e; 
 }
+p{
+  color: white;
+
+}
+h1{
+  color: white;
+}
 
 /*----------------------------------*/
