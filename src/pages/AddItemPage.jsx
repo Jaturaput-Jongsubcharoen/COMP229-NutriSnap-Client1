@@ -1,100 +1,111 @@
 import React, { useState } from 'react';
+import '../styles/AddItem.css'; 
 
-function AddItemPage() {
-    // State variables for item fields
-    const [itemName, setItemName] = useState('');
-    const [itemCalories, setItemCalories] = useState('');
-    const [itemProtein, setItemProtein] = useState('');
-    const [itemFat, setItemFat] = useState('');
-    const [itemCarbohydrates, setItemCarbohydrates] = useState('');
+function Add_Item() {
+  const [products, serProducts] = useState([]);
+  const [productDetails, setProductDetails] = useState({
+    name: '',
+    calories: '',
+    protein: '',
+    carbohydrates: '',
+    fat: '',
+  });
 
-    // Handle form submission
-    const handleSubmit = (e) => {
-        e.preventDefault();
+  const userInput = (input) => {
+    const { name, value } = input.target;
+    setProductDetails((prevDetails) => ({
+      ...prevDetails,
+      [name]: value || '', // Default to empty string for safety
+    }));
+  };
 
-        const newItem = {
-            name: itemName,
-            calories: itemCalories,
-            protein: itemProtein,
-            fat: itemFat,
-            carbohydrates: itemCarbohydrates,
-        };
+  const submit = (event) => {
+    event.preventDefault();
 
-        console.log('New Item:', newItem);
+    if (!productDetails.name || productDetails.name.trim() === '') {
+      alert('Please enter a valid product name.');
+      return;
+    }
 
-        // Optionally clear the form after submission
-        setItemName('');
-        setItemCalories('');
-        setItemProtein('');
-        setItemFat('');
-        setItemCarbohydrates('');
-    };
+    const newProduct = { ...productDetails };
+    serProducts([...products, newProduct]);
 
-    return (
-        <div style={{ padding: '20px' }}>
-            <h1>Add Item</h1>
-            <form onSubmit={handleSubmit}>
-                <div style={{ marginBottom: '10px' }}>
-                    <label htmlFor="name">Name: </label>
-                    <input
-                        type="text"
-                        id="name"
-                        value={itemName}
-                        onChange={(e) => setItemName(e.target.value)}
-                        required
-                        style={{ padding: '5px' }}
-                    />
-                </div>
-                <div style={{ marginBottom: '10px' }}>
-                    <label htmlFor="calories">Calories: </label>
-                    <input
-                        type="number"
-                        id="calories"
-                        value={itemCalories}
-                        onChange={(e) => setItemCalories(e.target.value)}
-                        required
-                        style={{ padding: '5px' }}
-                    />
-                </div>
-                <div style={{ marginBottom: '10px' }}>
-                    <label htmlFor="protein">Protein: </label>
-                    <input
-                        type="number"
-                        id="protein"
-                        value={itemProtein}
-                        onChange={(e) => setItemProtein(e.target.value)}
-                        required
-                        style={{ padding: '5px' }}
-                    />
-                </div>
-                <div style={{ marginBottom: '10px' }}>
-                    <label htmlFor="fat">Fat: </label>
-                    <input
-                        type="number"
-                        id="fat"
-                        value={itemFat}
-                        onChange={(e) => setItemFat(e.target.value)}
-                        required
-                        style={{ padding: '5px' }}
-                    />
-                </div>
-                <div style={{ marginBottom: '10px' }}>
-                    <label htmlFor="carbohydrates">Carbohydrates: </label>
-                    <input
-                        type="number"
-                        id="carbohydrates"
-                        value={itemCarbohydrates}
-                        onChange={(e) => setItemCarbohydrates(e.target.value)}
-                        required
-                        style={{ padding: '5px' }}
-                    />
-                </div>
-                <button type="submit" style={{ padding: '10px', fontSize: '16px' }}>
-                    Add Item
-                </button>
-            </form>
-        </div>
-    );
+    setProductDetails({
+      name: '',
+      calories: '',
+      protein: '',
+      carbohydrates: '',
+      fat: '',
+    });
+  };
+
+  return (
+    <div className="add-item-container">
+      <h1 className="title">Add Item</h1>
+      <form onSubmit={submit} className="form">
+        <p className="section-title">Product Information</p>
+        <input
+          type="text"
+          name="name"
+          value={productDetails.name}
+          onChange={userInput}
+          placeholder="Product Name"
+          required
+          className="input-field"
+        />
+        <input
+          type="number"
+          name="calories"
+          value={productDetails.calories}
+          onChange={userInput}
+          placeholder="Calories"
+          className="input-field"
+        />
+        <input
+          type="number"
+          name="protein"
+          value={productDetails.protein}
+          onChange={userInput}
+          placeholder="Protein (g)"
+          className="input-field"
+        />
+        <input
+          type="number"
+          name="carbohydrates"
+          value={productDetails.carbohydrates}
+          onChange={userInput}
+          placeholder="Carbohydrates (g)"
+          className="input-field"
+        />
+        <input
+          type="number"
+          name="fat"
+          value={productDetails.fat}
+          onChange={userInput}
+          placeholder="Fat (g)"
+          className="input-field"
+        />
+        <button type="submit" className="submit-button">Submit</button>
+      </form>
+
+      <h3 className="history-title">History</h3>
+      <div className="history">
+        {products.length === 0 ? (
+          <p className="no-products">No products added yet.</p>
+        ) : (
+          products.map((product, index) => (
+            <div key={index} className="product-card">
+              <h4 className="product-name">{product.name}</h4>
+              <p>Calories: {product.calories}</p>
+              <p>Protein: {product.protein}g</p>
+              <p>Carbohydrates: {product.carbohydrates}g</p>
+              <p>Fat: {product.fat}g</p>
+            </div>
+          ))
+        )}
+      </div>
+    </div>
+  );
 }
 
-export default AddItemPage;
+export default Add_Item;
