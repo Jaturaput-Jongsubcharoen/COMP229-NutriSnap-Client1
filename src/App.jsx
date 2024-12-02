@@ -1,6 +1,4 @@
-import { useState, useEffect } from 'react';
 import './App.css';
-import axios from 'axios';
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
@@ -13,44 +11,6 @@ import BarcodePage from './pages/BarcodePage';
 import TextSearchPage from './pages/TextSearchPage';
 
 function App() {
-  const [array, setArray] = useState([]);
-  const [arrayMongoDB, setArrayMongoDB] = useState([]);
-  const [showMongoDBData, setShowMongoDBData] = useState(false);
-
-  // Function to fetch hardcoded API data
-  const fetchAPI = async () => {
-    try {
-      const response = await axios.get('http://localhost:8080/api');
-      setArray(response.data.fruits);
-      console.log('API Response:', response.data.fruits);
-    } catch (error) {
-      console.error('Error fetching data (API Response):', error);
-    }
-  };
-
-  const fetchAPIMongoDB = async () => {
-    try {
-        console.log(import.meta.env);
-        console.log('VITE_BE_URL:', import.meta.env.VITE_BE_URL); // Debugging
-
-        const response = await fetch(`${import.meta.env.VITE_BE_URL}/apiMongo`);
-        if (!response.ok) {
-            throw new Error(`HTTP Error: ${response.status}`);
-        }
-
-        const data = await response.json();
-        console.log('API Mongo Response:', data);
-        setArrayMongoDB(data.items);
-        setShowMongoDBData(true);
-    } catch (error) {
-        console.error('Error fetching data (API Mongo Response):', error);
-    }
-  };
-
-  // Fetch the hardcoded API data on component mount
-  useEffect(() => {
-    fetchAPI();
-  }, []);
 
   return (
     <Router>
@@ -58,27 +18,22 @@ function App() {
         {/* Main Page */}
         <Route path="/" element={<MainPage />} />
 
+        {/* Predict Image Page - Gowsith */}
         <Route path="/predict-image" element={<PredictImagePage />} />
 
-        {/* History Page - Jaturaput "Mac"*/}
-        <Route
-          path="/history"
-          element={
-            <HistoryPage
-              array={array}
-              arrayMongoDB={arrayMongoDB}
-              showMongoDBData={showMongoDBData}
-              fetchAPIMongoDB={fetchAPIMongoDB}
-            />
-          }
-        />
+        {/* History Page - Jaturaput */}
+        <Route path="/history" element={<HistoryPage />} />
 
+        {/* Login Page - Sukhman */}
         <Route path="/login" element={<LoginPage />} />
 
+        {/* Add Item Page - Aryan */}
         <Route path="/add-item" element={<AddItemPage />} />
 
+        {/* Barcode Page - Joseph */}
         <Route path="/barcode" element={<BarcodePage />} />
 
+        {/* Text Search Page - Joseph */}
         <Route path="/text-search" element={<TextSearchPage />} />
       </Routes>
     </Router>
