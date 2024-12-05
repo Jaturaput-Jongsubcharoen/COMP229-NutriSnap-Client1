@@ -56,7 +56,7 @@ const TextSearchPage = () => {
       console.error("Error fetching nutrient data:", error);
     }
   };
-
+  //-----------------------------------------------------------------------------------
   const saveToDatabase = async (foodData) => {
     try {
       const response = await fetch(`${import.meta.env.VITE_BE_URL}/nutrients`, {
@@ -118,6 +118,7 @@ const TextSearchPage = () => {
         onChange={(e) => setSearchTerm(e.target.value)}
       />
       <button onClick={handleSearch}>Search</button>
+      <button onClick={handleSave}>Save</button> {/* Jaturaput */}
       {nutrients && (
         <div>
           <h4>Nutrient Information</h4>
@@ -125,8 +126,6 @@ const TextSearchPage = () => {
           <p>Protein: {nutrients.nf_protein} g</p>
           <p>Fat: {nutrients.nf_total_fat} g</p>
           <p>Carbohydrates: {nutrients.nf_total_carbohydrate} g</p>
-
-          <button onClick={handleSave}>Save</button> {/* Jaturaput */}
         </div>
       )}
       <div>
