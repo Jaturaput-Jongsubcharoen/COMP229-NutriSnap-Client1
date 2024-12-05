@@ -9,12 +9,22 @@ import LoginPage from './pages/LoginPage';
 import AddItemPage from './pages/AddItemPage';
 import BarcodePage from './pages/BarcodePage';
 import TextSearchPage from './pages/TextSearchPage';
+import {userState} from 'react'  //
+import 'bootstrap/dist/css/bootstrap.min.css'  //  
+import Signup from './Signup'  //
 
 function App() {
 
   return (
-    <Router>
+    <browserRouter>
+        <Router>
       <Routes>
+        {/*register*/}
+        <Route path='/register' element={<Signnup />}/>
+
+        {/*login*/}
+        <Route path='/login' element={<Login />}/>
+    
         {/* Main Page */}
         <Route path="/" element={<MainPage />} />
 
@@ -37,6 +47,8 @@ function App() {
         <Route path="/text-search" element={<TextSearchPage />} />
       </Routes>
     </Router>
+    </browserRouter>
+
   );
 }
 
