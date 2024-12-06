@@ -24,7 +24,7 @@ function HistoryPage() {
             console.log(import.meta.env);
             console.log('VITE_BE_URL:', import.meta.env.VITE_BE_URL); // Debugging
 
-            const response = await fetch(`${import.meta.env.VITE_BE_URL}/apiMongo`);
+            const response = await fetch(`http://localhost:8080/apiMongo`);
             if (!response.ok) {
                 throw new Error(`HTTP Error: ${response.status}`);
             }
