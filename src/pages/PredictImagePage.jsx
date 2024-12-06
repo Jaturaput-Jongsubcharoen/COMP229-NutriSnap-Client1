@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { GoogleGenerativeAI } from "@google/generative-ai";
-require ("dotenv").config();
+//require ("dotenv").config();
 
 const genAI = new GoogleGenerativeAI("AIzaSyBjbMiCGWlR2MbgKOH14uGKpb6VHC8H13o");
 const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
