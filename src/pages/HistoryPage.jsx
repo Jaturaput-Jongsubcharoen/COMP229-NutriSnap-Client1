@@ -6,13 +6,15 @@ function HistoryPage() {
     const [array, setArray] = useState([]);
     const [arrayMongoDB, setArrayMongoDB] = useState([]);
     const [showMongoDBData, setShowMongoDBData] = useState(false);
+    const [error, setError] = useState(null);
+
+    const BACKEND_URL = import.meta.env.VITE_BE_URL || "http://localhost:8080";
 
     // Function to fetch hardcoded API data
     const fetchAPI = async () => {
         try {
-            const response = await axios.get('http://localhost:8080/api');
+            const response = await axios.get(`${BACKEND_URL}/api`);
             setArray(response.data.fruits);
-            console.log('API Response:', response.data.fruits);
         } catch (error) {
             console.error('Error fetching data (API Response):', error);
         }
@@ -21,24 +23,16 @@ function HistoryPage() {
     // Function to fetch data from MongoDB
     const fetchAPIMongoDB = async () => {
         try {
-            console.log(import.meta.env);
-            console.log('VITE_BE_URL:', import.meta.env.VITE_BE_URL); // Debugging
-
-            const response = await fetch(`${import.meta.env.VITE_BE_URL}/apiMongo`);
-            if (!response.ok) {
-                throw new Error(`HTTP Error: ${response.status}`);
-            }
-
-            const data = await response.json();
-            console.log('API Mongo Response:', data);
-            setArrayMongoDB(data.items);
+            const response = await axios.get(`${BACKEND_URL}/apiMongo`);
+            setArrayMongoDB(response.data.items);
             setShowMongoDBData(true);
+            setError(null);
         } catch (error) {
             console.error('Error fetching data (API Mongo Response):', error);
+            setError("Failed to fetch MongoDB data. Please try again later.");
         }
     };
 
-    // Fetch the hardcoded API data on component mount
     useEffect(() => {
         fetchAPI();
     }, []);
@@ -81,26 +75,21 @@ function HistoryPage() {
             <div className="container-row">
                 <div className="container-column">
                     <button onClick={fetchAPIMongoDB}>Fetch MongoDB Data</button>
-                    {showMongoDBData && arrayMongoDB && arrayMongoDB.length > 0 && arrayMongoDB.map((item, index) => (
-                        <div key={item._id || index}>
-                            <p>
-                                <strong>Name:</strong> {item.name}
-                            </p>
-                            <p>
-                                <strong>Calories:</strong> {item.Calories}
-                            </p>
-                            <p>
-                                <strong>Protein:</strong> {item.Protein}
-                            </p>
-                            <p>
-                                <strong>Fat:</strong> {item.Fat}
-                            </p>
-                            <p>
-                                <strong>Carbohydrates:</strong> {item.Carbohydrates}
-                            </p>
-                            <br />
-                        </div>
-                    ))}
+                    {error && <p style={{ color: "red" }}>{error}</p>}
+                    {arrayMongoDB.length > 0 ? (
+                        arrayMongoDB.map((item, index) => (
+                            <div key={item._id || index}>
+                                <p><strong>Name:</strong> {item.name}</p>
+                                <p><strong>Calories:</strong> {item.Calories}</p>
+                                <p><strong>Protein:</strong> {item.Protein}</p>
+                                <p><strong>Fat:</strong> {item.Fat}</p>
+                                <p><strong>Carbohydrates:</strong> {item.Carbohydrates}</p>
+                                <br />
+                            </div>
+                        ))
+                    ) : (
+                        <p>No data available from MongoDB.</p>
+                    )}
                 </div>
             </div>
         </div>
