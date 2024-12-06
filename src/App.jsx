@@ -19,7 +19,7 @@ function App() {
         <Route path="/" element={<MainPage />} />
 
         {/* Predict Image Page - Gowsith */}
-        <Route path="/predict-image" element={<PredictImagePage />} />
+        {/*<Route path="/predict-image" element={<PredictImagePage />} */}
 
         {/* History Page - Jaturaput */}
         <Route path="/history" element={<HistoryPage />} />
