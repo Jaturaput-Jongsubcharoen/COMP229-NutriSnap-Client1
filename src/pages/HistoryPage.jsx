@@ -84,19 +84,19 @@ function HistoryPage() {
                     {showMongoDBData && arrayMongoDB && arrayMongoDB.length > 0 && arrayMongoDB.map((item, index) => (
                         <div key={item._id || index}>
                             <p>
-                                <strong>Name:</strong> {items.name}
+                                <strong>Name:</strong> {item.name}
                             </p>
                             <p>
-                                <strong>Calories:</strong> {items.Calories}
+                                <strong>Calories:</strong> {item.Calories}
                             </p>
                             <p>
-                                <strong>Protein:</strong> {items.Protein}
+                                <strong>Protein:</strong> {item.Protein}
                             </p>
                             <p>
-                                <strong>Fat:</strong> {items.Fat}
+                                <strong>Fat:</strong> {item.Fat}
                             </p>
                             <p>
-                                <strong>Carbohydrates:</strong> {items.Carbohydrates}
+                                <strong>Carbohydrates:</strong> {item.Carbohydrates}
                             </p>
                             <br />
                         </div>
