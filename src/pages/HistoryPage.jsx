@@ -82,16 +82,24 @@ function HistoryPage() {
                 <div className="container-column">
                     <button onClick={fetchAPIMongoDB}>Fetch MongoDB Data</button>
                     {showMongoDBData && arrayMongoDB && arrayMongoDB.length > 0 && arrayMongoDB.map((item, index) => (
-                        {arrayMongoDB.map((item, index) => (
-                            <div key={item._id || index}>
-                              <p><strong>Name:</strong> {item.items.name}</p>
-                              <p><strong>Calories:</strong> {item.items.Calories}</p>
-                              <p><strong>Protein:</strong> {item.items.Protein}</p>
-                              <p><strong>Fat:</strong> {item.items.Fat}</p>
-                              <p><strong>Carbohydrates:</strong> {item.items.Carbohydrates}</p>
-                              <br />
-                            </div>
-                          ))}
+                        <div key={item._id || index}>
+                            <p>
+                                <strong>Name:</strong> {items.name}
+                            </p>
+                            <p>
+                                <strong>Calories:</strong> {items.Calories}
+                            </p>
+                            <p>
+                                <strong>Protein:</strong> {items.Protein}
+                            </p>
+                            <p>
+                                <strong>Fat:</strong> {items.Fat}
+                            </p>
+                            <p>
+                                <strong>Carbohydrates:</strong> {items.Carbohydrates}
+                            </p>
+                            <br />
+                        </div>
                     ))}
                 </div>
             </div>
