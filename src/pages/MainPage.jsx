@@ -57,7 +57,7 @@ function MainPage({ array, arrayMongoDB, showMongoDBData, fetchAPIMongoDB }) {
                         <div className="container-row">
                             <div className="container-row1">
                                 <button className="green-button" onClick={handleFetchBarcodePageClick}>Upload Barcode</button>
-                                <button className="purple-button" onClick={handlePredictImageClick}>Upload Image for AI Suggestion</button>
+                                <button className="purple-button" onClick={handlePredictImageClick}>Not sure? Let AI Guess</button>
                                 <button className="black-button" onClick={handleTextSearchforFood}>Text Search for Food</button>
                             </div>
                         </div>
