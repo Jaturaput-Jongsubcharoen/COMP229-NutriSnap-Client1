@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import axios from 'axios';
-import Quagga from 'quagga';
+//import axios from 'axios';
+//import Quagga from 'quagga';
 
 function BarcodePage() {
     const [barcode, setBarcode] = useState('');

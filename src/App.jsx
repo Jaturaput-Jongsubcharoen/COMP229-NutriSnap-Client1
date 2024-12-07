@@ -5,10 +5,11 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import MainPage from './pages/MainPage';
 import PredictImagePage from './pages/PredictImagePage'; 
 import HistoryPage from './pages/HistoryPage'; 
-import LoginPage from './pages/LoginPage'; 
 import AddItemPage from './pages/AddItemPage';
 import BarcodePage from './pages/BarcodePage';
 import TextSearchPage from './pages/TextSearchPage';
+import RegisterPage from './pages/RegisterPage';
+import LoginPage from './pages/LoginPage';
 
 function App() {
 
@@ -16,7 +17,7 @@ function App() {
     <Router>
       <Routes>
         {/* Main Page */}
-        <Route path="/" element={<MainPage />} />
+        <Route path="/main-page" element={<MainPage />} />
 
         {/* Predict Image Page - Gowsith */}
         <Route path="/predict-image" element={<PredictImagePage/>} />
@@ -26,8 +27,6 @@ function App() {
 
         {/* Login Page - Sukhman */}
         <Route path="/" element={<LoginPage />} />
-
-        {/* Register Page - Sukhman */}
         <Route path= "/register" element={<RegisterPage/>} />
 
         {/* Add Item Page - Aryan */}
