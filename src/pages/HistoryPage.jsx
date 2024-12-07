@@ -10,7 +10,7 @@ function HistoryPage() {
     // Function to fetch hardcoded API data
     const fetchAPI = async () => {
         try {
-            const response = await axios.get('http://localhost:8080/api');
+            const response = await axios.get(`${import.meta.env.VITE_BE_URL}/api`);
             setArray(response.data.fruits);
             console.log('API Response:', response.data.fruits);
         } catch (error) {
