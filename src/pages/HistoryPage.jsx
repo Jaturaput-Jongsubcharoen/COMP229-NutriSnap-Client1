@@ -82,22 +82,34 @@ function HistoryPage() {
                 <div className="container-column">
                     <button onClick={fetchAPIMongoDB}>Fetch MongoDB Data</button>
                     {showMongoDBData && arrayMongoDB && arrayMongoDB.length > 0 && arrayMongoDB.map((item, index) => (
-                        <div key={item._id || index}>
+                        <div key={item._id || index} className="item-card">
                             <p>
                                 <strong>Name:</strong> {item.name}
                             </p>
                             <p>
-                                <strong>Calories:</strong> {item.Calories}
+                                <strong>Calories:</strong> {item.calories}
                             </p>
                             <p>
-                                <strong>Protein:</strong> {item.Protein}
+                                <strong>Protein:</strong> {item.protein}
                             </p>
                             <p>
-                                <strong>Fat:</strong> {item.Fat}
+                                <strong>Fat:</strong> {item.fat}
                             </p>
                             <p>
-                                <strong>Carbohydrates:</strong> {item.Carbohydrates}
+                                <strong>Carbohydrates:</strong> {item.carbohydrates}
                             </p>
+                            <p>
+                                <strong>Meal Type:</strong> {item.mealType}
+                            </p>
+                            <p>
+                                <strong>Barcode:</strong> {item.barcode || "N/A"}
+                            </p>
+                            {item.aiImage && (
+                                <p>
+                                    <strong>AI Image:</strong> <br />
+                                    <img src={item.aiImage} alt={`${item.name} AI Image`} className="ai-image" />
+                                </p>
+                            )}
                             <br />
                         </div>
                     ))}

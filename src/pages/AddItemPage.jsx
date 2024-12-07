@@ -30,20 +30,23 @@ function Add_Item() {
   };
 
   const saveToDatabase = async (foodData) => {
+    console.log("Sending data to backend:", foodData); // Debugging
     try {
-      const response = await fetch(`${import.meta.env.VITE_BE_URL}/nutrients`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(foodData),
-      });
+        const response = await fetch(`${import.meta.env.VITE_BE_URL}/nutrients`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(foodData),
+        });
 
-      if (!response.ok) {
-        throw new Error(`Failed to save: ${response.status}`);
-      }
+        if (!response.ok) {
+            throw new Error(`Failed to save: ${response.status}`);
+        }
+
+        console.log("Data saved successfully:", await response.json());
     } catch (error) {
-      console.error('Error saving:', error);
+        console.error("Error saving to backend:", error);
     }
   };
 
@@ -65,14 +68,16 @@ function Add_Item() {
 
   
     const foodData = {
-      Name: productDetails.name,
-      Calories: productDetails.calories,
-      Protein: productDetails.protein,
-      Fat: productDetails.fat,
-      Carbohydrates: productDetails.carbohydrates,
+      name: productDetails.name,
+      calories: productDetails.calories,
+      protein: productDetails.protein,
+      fat: productDetails.fat,
+      carbohydrates: productDetails.carbohydrates,
+      mealType: productDetails.mealType,
     };
     
-    
+    console.log("Food data being sent to backend:", foodData); // Debugging
+
     handleSave(foodData);
 
     setProductDetails({ name: '', calories: '', protein: '', carbohydrates: '', fat: '', mealType: '' });
