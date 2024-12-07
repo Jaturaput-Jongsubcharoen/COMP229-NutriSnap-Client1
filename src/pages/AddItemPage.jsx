@@ -29,6 +29,30 @@ function Add_Item() {
     }
   };
 
+  const saveToDatabase = async (foodData) => {
+    try {
+      const response = await fetch(`${import.meta.env.VITE_BE_URL}/nutrients`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(foodData),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Failed to save: ${response.status}`);
+      }
+    } catch (error) {
+      console.error('Error saving:', error);
+    }
+  };
+
+  const handleSave = async (foodData) => {
+    if (foodData) {
+      await saveToDatabase(foodData);
+    }
+  };
+
   const submit = (event) => {
     event.preventDefault();
     if (!productDetails.name.trim()) {
@@ -36,12 +60,25 @@ function Add_Item() {
       return;
     }
 
-    const newProduct = { ...productDetails, barcode, aiImage};
+    const newProduct = { ...productDetails, barcode, aiImage };
     setProducts([...products, newProduct]);
+
+  
+    const foodData = {
+      Name: productDetails.name,
+      Calories: productDetails.calories,
+      Protein: productDetails.protein,
+      Fat: productDetails.fat,
+      Carbohydrates: productDetails.carbohydrates,
+    };
+    
+    
+    handleSave(foodData);
+
     setProductDetails({ name: '', calories: '', protein: '', carbohydrates: '', fat: '', mealType: '' });
     setAiImage(null);
     setBarcode(null);
-
+    
   };
 
   return (
@@ -87,7 +124,7 @@ function Add_Item() {
               onChange={userInput}
               placeholder="Fat (g)"
             />
-             <label>
+            <label>
               Meal Type:
               <select
                 name="mealType"
@@ -131,8 +168,8 @@ function Add_Item() {
           {products.length === 0 ? (
             <p>No products added yet.</p>
           ) : (
-            products.map((product) => (
-              <div key={product.id}>
+            products.map((product, index) => (
+              <div key={index}>
                 <h4>{product.name}</h4>
                 <p>Calories: {product.calories}</p>
                 <p>Protein: {product.protein}g</p>
