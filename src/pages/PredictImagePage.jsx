@@ -4,19 +4,20 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 const genAI = new GoogleGenerativeAI("AIzaSyAMNLbBF6YhV4RHPzybgdCm9TV8nL5Wk3Y");
 const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
-function PredictImagePage({ onSaveItem }) {
+function PredictImagePage() {
   const [input, setInput] = useState("");
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [savedItems, setSavedItems] = useState([]); // State for saved items
 
-  // Manual input state
   const [manualInput, setManualInput] = useState({
     name: "",
     calories: "",
     protein: "",
     carbohydrates: "",
     fat: "",
+    mealType: "",
   });
 
   const handleSubmit = async (e) => {
@@ -40,24 +41,36 @@ function PredictImagePage({ onSaveItem }) {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    console.log(`Manual Input Change - ${name}:`, value); // Log changes in manual input
     setManualInput((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSave = () => {
-    console.log("Manual Input before saving:", manualInput); // Log manual input state before saving
     if (!manualInput.name.trim()) {
       alert("Please enter a name for the item.");
       return;
     }
-    onSaveItem(manualInput);
-    console.log("Item saved successfully."); // Log save success
-    setManualInput({ name: "", calories: "", protein: "", carbohydrates: "", fat: "" });
+    if (!manualInput.mealType.trim()) {
+      alert("Please select a meal type.");
+      return;
+    }
+
+    // Add manual input to the saved items list
+    setSavedItems((prev) => [...prev, { ...manualInput }]);
+    setManualInput({
+      name: "",
+      calories: "",
+      protein: "",
+      carbohydrates: "",
+      fat: "",
+      mealType: "",
+    });
   };
 
   return (
     <div style={{ fontFamily: "Arial, sans-serif", padding: "20px" }}>
       <h1>Food Nutritional Info</h1>
+
+      {/* Input Form */}
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -75,12 +88,16 @@ function PredictImagePage({ onSaveItem }) {
           Get Info
         </button>
       </form>
+
       {loading && <p>Loading...</p>}
       {error && <p style={{ color: "red" }}>{error}</p>}
+
       {result && (
         <div>
           <h2>Results:</h2>
           <p>{result}</p>
+
+          {/* Manual Input Fields */}
           <div>
             <h3>Manually Edit Values:</h3>
             <input
@@ -118,10 +135,48 @@ function PredictImagePage({ onSaveItem }) {
               value={manualInput.fat}
               onChange={handleInputChange}
             />
-            <button onClick={handleSave}>Save to History</button>
+            <label>
+              Meal Type:
+              <select
+                name="mealType"
+                value={manualInput.mealType}
+                onChange={handleInputChange}
+                style={{ marginLeft: "10px", padding: "5px" }}
+              >
+                <option value="" disabled>
+                  Select Meal Type
+                </option>
+                <option value="Snacks">Snacks</option>
+                <option value="Breakfast">Breakfast</option>
+                <option value="Lunch">Lunch</option>
+                <option value="Dinner">Dinner</option>
+              </select>
+            </label>
+            <button onClick={handleSave} style={{ marginTop: "10px", padding: "10px 20px" }}>
+              Save to History
+            </button>
           </div>
         </div>
       )}
+
+      {/* History Section */}
+      <div style={{ marginTop: "20px" }}>
+        <h3>History</h3>
+        {savedItems.length === 0 ? (
+          <p>No items saved yet.</p>
+        ) : (
+          savedItems.map((item, index) => (
+            <div key={index} style={{ border: "1px solid #ccc", margin: "10px", padding: "10px" }}>
+              <h4>{item.name}</h4>
+              <p>Calories: {item.calories}</p>
+              <p>Protein: {item.protein}g</p>
+              <p>Carbohydrates: {item.carbohydrates}g</p>
+              <p>Fat: {item.fat}g</p>
+              <p>Meal Type: {item.mealType}</p>
+            </div>
+          ))
+        )}
+      </div>
     </div>
   );
 }
