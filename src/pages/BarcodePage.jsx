@@ -37,8 +37,8 @@ function BarcodePage() {
           const response = await axios.get('https://api.nutritionix.com/v2/search/item', {
             params: {
               upc: barcode,
-              appId: '987883de',
-              appKey: '6b96a1f0e21ec3734ee14f5832315d5f',
+              appId: import.meta.env.VITE_NUTRITIONIX_APP_ID,
+              appKey: import.meta.env.VITE_NUTRITIONIX_API_KEY,
             },
           });
           setNutrients(response.data);
@@ -57,7 +57,7 @@ function BarcodePage() {
             setResult('Please enter a barcode!');
         }
     };
-    
+
     return (
         <div>
           <h1>Barcode Scanner</h1>
