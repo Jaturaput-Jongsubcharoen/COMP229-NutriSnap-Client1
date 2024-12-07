@@ -14,6 +14,7 @@
     "axios": "^1.7.8",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
+    "quagga": "^0.12.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^7.0.1"
