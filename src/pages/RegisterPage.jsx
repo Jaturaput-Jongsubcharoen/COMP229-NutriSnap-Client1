@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import '../styles/Register.css';
 
 const Register = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
-  const navigate = useNavigate(); // Using useNavigate for routing
+  const navigate = useNavigate(); // Using useNavigate for routing or for redirecting from one page to other 
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -20,7 +21,7 @@ const Register = () => {
     });
 
     if (response.ok) {
-      navigate('/'); // Redirect to login page after successful registration
+      navigate('/'); // Redirect to login page after registration
     } else {
       const errorMessage = await response.text();
       setError(errorMessage);
@@ -28,7 +29,7 @@ const Register = () => {
   };
 
   return (
-    <div className="auth-container">
+    <div className="sukh-container">
       <h2>Register</h2>
       <form onSubmit={handleRegister}>
         <input
