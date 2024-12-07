@@ -25,7 +25,10 @@ function App() {
         <Route path="/history" element={<HistoryPage />} />
 
         {/* Login Page - Sukhman */}
-        <Route path="/login" element={<LoginPage />} />
+        <Route path="/" element={<LoginPage />} />
+
+        {/* Register Page - Sukhman */}
+        <Route path= "/register" element={<RegisterPage/>} />
 
         {/* Add Item Page - Aryan */}
         <Route path="/add-item" element={<AddItemPage />} />
