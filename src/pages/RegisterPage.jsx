@@ -30,7 +30,7 @@ const Register = () => {
 
   return (
     <div className="sukh-container">
-      <h2>Register</h2>
+      <h2>Welcome New User</h2>
       <form onSubmit={handleRegister}>
         <input
           type="text"
