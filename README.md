@@ -47,7 +47,7 @@ Stretch Goals:
 
 - Meal Planner: Based on the nutritional data, suggest meal plans for users according to their dietary needs. (in the works)
 - Dietary Recommendations: Provide tailored recommendations based on the user's dietary preferences or restrictions (e.g., low-carb, vegetarian, etc.). (Removed)
-- Text Transcritpion Using AI; THe application will send the text input to an AI model which will give estimate or information about food item. 
+- Text Transcritpion Using AI; THe application will send the text input to an AI model which will give estimate or information about food item. (done)
 - AI-Nutritional Reports: Allow users to export their nutritional information from history to be analyzed by AI for recommendation.(in the works)
 
 
