@@ -44,7 +44,30 @@ function PredictImagePage() {
     setManualInput((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSave = () => {
+  const saveToDatabase = async (foodData) => {
+    console.log("Sending data to backend:", foodData); // Debugging
+    try {
+      const response = await fetch(`${import.meta.env.VITE_BE_URL}/nutrients`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(foodData),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Failed to save: ${response.status}`);
+      }
+
+      console.log("Data saved successfully:", await response.json());
+      alert("Data saved to database successfully!");
+    } catch (error) {
+      console.error("Error saving to backend:", error);
+      alert("Failed to save data. Please try again.");
+    }
+  };
+
+  const handleSave = async () => {
     if (!manualInput.name.trim()) {
       alert("Please enter a name for the item.");
       return;
@@ -55,7 +78,8 @@ function PredictImagePage() {
     }
 
     // Add manual input to the saved items list
-    setSavedItems((prev) => [...prev, { ...manualInput }]);
+    const foodData = { ...manualInput };
+    setSavedItems((prev) => [...prev, foodData]);
     setManualInput({
       name: "",
       calories: "",
@@ -64,6 +88,9 @@ function PredictImagePage() {
       fat: "",
       mealType: "",
     });
+
+    // Save to database
+    await saveToDatabase(foodData);
   };
 
   return (
@@ -152,7 +179,9 @@ function PredictImagePage() {
                 <option value="Dinner">Dinner</option>
               </select>
             </label>
-            <button onClick={handleSave} style={{ marginTop: "10px", padding: "10px 20px" }}>
+            <button
+              onClick={handleSave}
+            >
               Save to History
             </button>
           </div>
