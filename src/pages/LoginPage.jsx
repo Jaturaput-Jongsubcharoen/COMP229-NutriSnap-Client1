@@ -25,12 +25,12 @@ const Login = () => {
 
       
       console.log("Login successful, token:", data.token); // Debugging
-      //console.log("UserID:", data.userID); // Debugging
+      console.log("UserID:", data.userID); // Debugging
 
 
       localStorage.setItem('token', data.token); // Save token to localStorage
       //------------------------------------------------------------------------------------
-      //localStorage.setItem('userID', data.userID); // Save userID
+      localStorage.setItem('userID', data.userID); // Save userID
       //------------------------------------------------------------------------------------
       navigate('/main-page'); // Redirect to the dashboard or home page
     } else {

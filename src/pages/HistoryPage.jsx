@@ -7,8 +7,38 @@ function HistoryPage() {
     //const [array, setArray] = useState([]);
     const [arrayMongoDB, setArrayMongoDB] = useState([]);
     const [showMongoDBData, setShowMongoDBData] = useState(false);
-    const [userID, setUserID] = useState("");
-    
+    const [username, setUsername] = useState("not logged in"); 
+
+    //username
+    const fetchUsername = async () => {
+        try {
+            const token = localStorage.getItem("token"); // Get the token from localStorage
+
+            if (!token) {
+                console.error("No token found, user might not be logged in.");
+                return;
+            }
+
+            const response = await fetch(`${import.meta.env.VITE_BE_URL}/getUser`, {
+                method: "GET",
+                headers: {
+                    Authorization: `Bearer ${token}`, // Include token in the Authorization header
+                },
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP Error: ${response.status}`);
+            }
+
+            const data = await response.json();
+            console.log("Fetched Username:", data.username);
+            setUsername(data.username || "not logged in");
+        } catch (error) {
+            console.error("Error fetching username:", error);
+            setUsername("not logged in");
+        }
+    };
+
     // Function to fetch hardcoded API data
     /*
     const fetchAPI = async () => {
@@ -22,7 +52,7 @@ function HistoryPage() {
     };
     */
 
-    // Function to fetch data from MongoDB
+    // fetch data from MongoDB
     const fetchAPIMongoDB = async () => {
         try {
             console.log(import.meta.env);
@@ -60,8 +90,7 @@ function HistoryPage() {
 
     // Fetch the hardcoded API data on component mount
     useEffect(() => {
-        const storedUserID = localStorage.getItem("userID");
-        setUserID(storedUserID || "not logged in");
+        fetchUsername();
         fetchAPIMongoDB();
     }, []);
 
@@ -101,17 +130,22 @@ function HistoryPage() {
                 <div className="container-row">
                     <div className="container-column">
                         <h2>Explore Your History of Added Items.</h2>
-                        <h3>user ID: {userID}.</h3>
+                    </div>
+                </div>
+                <div className="container-row">
+                    <div className="decorate-row9">
+                        <h3>Username: {username}.</h3>
                     </div>
                 </div>
                 <br />
                 
                 <div className="container-row">
-                    <div className="container-column">
+                    <div className="container-column1">
                         {showMongoDBData && arrayMongoDB && arrayMongoDB.length > 0 ? (
                             arrayMongoDB.map((item, index) => (
                                 <div className="decorate-row4" key={item._id || index}>
                                     <div className="item-card">
+                                        <hr />
                                         <p>
                                             <strong>Name:</strong> {item.name}
                                         </p>
@@ -146,7 +180,7 @@ function HistoryPage() {
                         ) : (
                             <h2>No items have been stored yet. Please add some items.</h2>
                         )}
-                    </div>
+                    </div>        
                 </div>
             </div>
         </div>
