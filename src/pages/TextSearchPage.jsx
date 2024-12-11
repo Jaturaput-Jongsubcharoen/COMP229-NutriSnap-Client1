@@ -122,6 +122,7 @@ const TextSearchPage = () => {
       <button onClick={handleSave}>Save</button> {/* Jaturaput */}
       {nutrients && (
         <div>
+          
           <h4>Nutrient Information</h4>
           <p>Calories: {nutrients.nf_calories}</p>
           <p>Protein: {nutrients.nf_protein} g</p>
