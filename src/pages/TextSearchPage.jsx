@@ -109,7 +109,7 @@ const TextSearchPage = () => {
     }
   };
   return (
-    <div className="search-section">
+    <div className="textsearch_barcode_container">
       <h1>Text Search for Food</h1>
       <input
         type="text"

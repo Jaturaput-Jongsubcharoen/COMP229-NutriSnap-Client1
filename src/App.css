@@ -283,7 +283,18 @@ body {
   width: 100%;
 }
 
+.textsearch_barcode_container {
+  text-align: Center;
+  margin-top: 20px;
+  color: #f2f0c4; 
+}
+
 .table_NI {
   margin: 0 auto;
-  borderCollapse: collapse;
+  border-collapse: collapse;
+}
+
+.table_th_td {
+   border: 2px solid gray;
+   padding:10px;
 }
