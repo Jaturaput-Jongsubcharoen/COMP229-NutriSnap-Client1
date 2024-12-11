@@ -17,25 +17,26 @@ function BarcodePage() {
     // This section handles image recognition to barcode value using Quagga
       const scanBarcode = () => {
         if(!image){
-          setErrorMessage("Please upload an image of a barcode first");
+          setErrorMessage("Please upload an image of a barcode first.");
           return;
         }
+    
+    // This section handles the decoding of barcode image to barcode value.
         Quagga.decodeSingle({
           src: image,
-          numOfWorkers: 0,  // Needs to be 0 when used within node
+          numOfWorkers: 0,  // Needs to be 0 when used within Node.js
           inputStream: {
             size: 800  // restrict input-size to be 800px in width (long-side)
           },
           decoder: {
-            readers: ["ean_reader"]  // List of active readers
-          },
-        }, (result) => {
+            readers: ["ean_reader", "upc_reader"],}, // List of active readers for two barcode types
+        }, 
+        (result) => {
           if (result && result.codeResult) {
             setBarcode(result.codeResult.code);
             fetchNutritionalInfo(result.codeResult.code);
-          } else {
-            console.log("Barcode not detected");
-          }
+            setErrorMessage(""); //Clears previous errors displayed.
+          } else {setErrorMessage("Barcode not detected in the uploaded image.");}
         });
       };
 
