@@ -89,24 +89,24 @@ function BarcodePage() {
                 </thead>
                 <tbody>
                   <tr>
-                    <td style={{ border:"2px solid black", padding:"10px" }}>Food Name</td>
-                    <td style={{ border:"2px solid black", padding:"10px" }}>{nutrients.food_name}</td>
+                    <td className='table_th_td'>Food Name</td>
+                    <td className='table_th_td'>{nutrients.food_name}</td>
                   </tr>
                   <tr>
-                    <td style={{ border:"2px solid black", padding:"10px" }}>Calories</td>
-                    <td style={{ border:"2px solid black", padding:"10px" }}>{nutrients.nf_calories} kilocalories</td>
+                    <td className='table_th_td'>Calories</td>
+                    <td className='table_th_td'>{nutrients.nf_calories} kilocalories</td>
                   </tr>
                   <tr>
-                    <td style={{ border:"2px solid black", padding:"10px" }}>Protein</td>
-                    <td style={{ border:"2px solid black", padding:"10px" }}>{nutrients.nf_protein} grams</td>
+                    <td className='table_th_td'>Protein</td>
+                    <td className='table_th_td'>{nutrients.nf_protein} grams</td>
                   </tr>
                   <tr>
-                    <td style={{ border:"2px solid black", padding:"10px" }}>Fat</td>
-                    <td style={{ border:"2px solid black", padding:"10px" }}>{nutrients.nf_total_fat} grams</td>
+                    <td className='table_th_td'>Fat</td>
+                    <td className='table_th_td'>{nutrients.nf_total_fat} grams</td>
                   </tr>
                   <tr>
-                    <td style={{ border:"2px solid black", padding:"10px" }}>Carbohydrates</td>
-                    <td style={{ border:"2px solid black", padding:"10px" }}>{nutrients.nf_total_carbohydrate} grams</td>
+                    <td className='table_th_td'>Carbohydrates</td>
+                    <td className='table_th_td'>{nutrients.nf_total_carbohydrate} grams</td>
                   </tr>
                 </tbody>
               </table>
