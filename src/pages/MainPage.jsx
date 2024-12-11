@@ -35,14 +35,19 @@ function MainPage({ array, arrayMongoDB, showMongoDBData, fetchAPIMongoDB }) {
     return (
         <div>
             <div className="container-row">
-                <div>
+                <div className="logo-container">
                     <img src={logo1} className="logo" alt="Custom Logo 1" />
                 </div>
             </div>
-            
+            <hr />
             <div className="container-row">
-                <div className="container-row3">
-                    <h1>Nutri-Kcal</h1>
+                <div className="title">
+                    <h1>N U T R I - K C A L</h1>
+                </div>
+            </div>
+            <hr />
+            <div className="container-row">
+                <div className="container-row6">
                     <button className="login-logout-button" onClick={handleLoginPageClick}>Login</button>
                     <button className="login-logout-button">Logout</button>
                 </div>
@@ -51,32 +56,38 @@ function MainPage({ array, arrayMongoDB, showMongoDBData, fetchAPIMongoDB }) {
             <div className="container-row">
                 <div className="container-column">
                     <div className="decorate-main-page1">
-                        <p className="track-meals-text">Track Your Meals</p>
+                        <h2>T R A C K&nbsp;&nbsp;&nbsp;&nbsp;Y O U R&nbsp;&nbsp;&nbsp;&nbsp;M E A L S</h2>
                         <br/>
 
                         <div className="container-row">
                             <div className="container-row1">
-                                <button className="green-button" onClick={handleFetchBarcodePageClick}>Upload Barcode</button>
-                                <button className="purple-button" onClick={handlePredictImageClick}>Not sure? Let AI Guess</button>
-                                <button className="black-button" onClick={handleTextSearchforFood}>Text Search for Food</button>
+                                <button className="brown1-button" onClick={handleFetchBarcodePageClick}>Upload Barcode</button>
+                                <button className="brown2-button" onClick={handlePredictImageClick}>Not sure? Let AI Guess</button>
+                                <button className="brown3-button" onClick={handleTextSearchforFood}>Text Search for Food</button>
                             </div>
                         </div>
                         <br/>
 
                         <div className="container-row">
-                            <div className="decorate-row2">
-                                <p>History</p>
+                            <div className="decorate-row4">
+                                <p>Explore Your History of Added Items</p>
+                                <hr />
                                 <br />
-                                <button onClick={handleHistoryPageClick}>History Page</button>
+                                <div className="decorate-row5">
+                                    <button className="white-button" onClick={handleHistoryPageClick}>History</button>
+                                </div>
                             </div>
                         </div>
                         <br />
 
                         <div className="container-row">
-                            <div className="decorate-row2">
-                                <p>Add Item</p>
+                            <div className="decorate-row4">
+                                <p>Add and Customize Your Item</p>
+                                <hr />
                                 <br />
-                                <button onClick={handleAddItemPageClick}>Add Item Page</button>
+                                <div className="decorate-row5">
+                                    <button className="white-button" onClick={handleAddItemPageClick}>Add Item</button>
+                                </div>
                             </div>
                         </div>
                         <br />

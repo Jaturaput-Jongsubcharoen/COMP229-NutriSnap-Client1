@@ -8,7 +8,6 @@ body {
   height: 100%;
 }
 
-
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -16,14 +15,22 @@ body {
   /*text-align: center;*/
 }
 
+.logo-container {
+  display: flex; /* Enable Flexbox for the container */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  width: 100%; /* Ensure full row width */
+  height: auto; /* Adjust based on content */
+}
+
 .logo {
   height: 10em;
   padding: 1.5em;
   will-change: filter;
   transition: filter 300ms;
-  justify-content: center; /* horizontally */
-  align-items: center; /* vertically */
-  filter: invert(1) brightness(2); 
+  filter: invert(1) brightness(2);
+  max-width: 100%; 
+  height: auto;
 }
 
 .card {
@@ -64,8 +71,7 @@ body {
 }
 
 .decorate-row2 {
-  background-color: black; 
-  color: white;
+  background-color: #000000; 
   padding: 15px;
   border-radius: 8px; 
   margin: 10px 0;
@@ -75,15 +81,41 @@ body {
 .container-row3  {
   color: white;
   display: flex; 
-  gap: 40px;
   justify-content: center;
   align-items: center;
+  gap: 40px;
   margin: 20px 0;
+}
+
+.decorate-row4 {
+  background-color: #2c2620;
+  color: white; 
+  padding: 15px;
+  border-radius: 8px; 
+  margin: 10px 0;
+  width: 100%;
+}
+
+.decorate-row5 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.container-row6 {
+  color: white;
+  display: flex; 
+  justify-content: flex-end;
+  align-items: center;
+  gap: 40px;
+  margin: 20px;
+  width: 100%;
 }
 
 .track-meals-text {
   font-weight: bold; 
-  font-size: 18px;
+  font-size: 2em;
   color: #000;
   text-align: left; 
 }
@@ -144,12 +176,73 @@ body {
 .login-logout-button:hover {
   background-color: #4e4e4e; 
 }
-p{
-  color: white;
-
-}
-h1{
-  color: white;
-}
-
 /*----------------------------------*/
+.brown1-button {
+  background-color: #83766d; 
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.brown1-button:hover {
+  background-color: #4d4744;
+}
+
+.brown2-button {
+  background-color: #665448; 
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.brown2-button:hover {
+  background-color: #4d4744; 
+}
+
+.brown3-button {
+  background-color: #523f35; 
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.brown3-button:hover {
+  background-color: #4d4744; 
+}
+
+.white-button {
+  background-color: #ffffff; 
+  color: rgb(0, 0, 0);
+  border: none;
+  padding: 5px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.white-button:hover {
+  background-color: #4d4744; 
+  color: rgb(255, 255, 255);
+}
+/*----------------------------------*/
+.title {
+  text-align: center; 
+  color: white;
+  font-size: 1em;
+  font-weight: bold; 
+  margin-top: 20px;
+  width: 100%;
+}
