@@ -7,7 +7,8 @@ function HistoryPage() {
     //const [array, setArray] = useState([]);
     const [arrayMongoDB, setArrayMongoDB] = useState([]);
     const [showMongoDBData, setShowMongoDBData] = useState(false);
-
+    const [userID, setUserID] = useState("");
+    
     // Function to fetch hardcoded API data
     /*
     const fetchAPI = async () => {
@@ -59,6 +60,8 @@ function HistoryPage() {
 
     // Fetch the hardcoded API data on component mount
     useEffect(() => {
+        const storedUserID = localStorage.getItem("userID");
+        setUserID(storedUserID || "not logged in");
         fetchAPIMongoDB();
     }, []);
 
@@ -98,7 +101,7 @@ function HistoryPage() {
                 <div className="container-row">
                     <div className="container-column">
                         <h2>Explore Your History of Added Items.</h2>
-                        <h3>user ID: {localStorage.getItem("userID") || "not logged in"}.</h3>
+                        <h3>user ID: {userID}.</h3>
                     </div>
                 </div>
                 <br />
