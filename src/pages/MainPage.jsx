@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import logo1 from '../images/logo1.png';
+import scan from '../images/scan.png';
+import AIpng from '../images/AIpng.png';
+import loupe from '../images/loupe.png';
+import history from '../images/history.png';
+import add from '../images/add.png';
 import '../styles/DecorateMainPage.css';
 
 function MainPage({}) {
@@ -99,15 +104,24 @@ function MainPage({}) {
             <br/>
             <div className="container-row">
                 <div className="container-column">
-                    <div className="decorate-main-page1">
+                    <div className="decorate-main-page2">
                         <h2>T R A C K&nbsp;&nbsp;&nbsp;&nbsp;Y O U R&nbsp;&nbsp;&nbsp;&nbsp;M E A L S</h2>
                         <br/>
 
                         <div className="container-row">
                             <div className="container-row1">
-                                <button className="brown1-button" onClick={handleFetchBarcodePageClick}>Upload Barcode</button>
-                                <button className="brown2-button" onClick={handlePredictImageClick}>Not sure? Let AI Guess</button>
-                                <button className="brown3-button" onClick={handleTextSearchforFood}>Text Search for Food</button>
+                                <button className="container-column2 brown1-button" onClick={handleFetchBarcodePageClick}>
+                                    <img src={scan} className="icon1" alt="icon 2" /> 
+                                    Upload Barcode
+                                </button>
+                                <button className="container-column2 brown2-button" onClick={handlePredictImageClick}>
+                                    <img src={AIpng} className="icon1" alt="icon 2" /> 
+                                    Not sure? Let AI Guess
+                                </button>
+                                <button className="container-column2 brown3-button" onClick={handleTextSearchforFood}>
+                                    <img src={loupe} className="icon1" alt="icon 2" /> 
+                                    Text Search for Food
+                                </button>
                             </div>
                         </div>
                         <br/>
@@ -118,7 +132,10 @@ function MainPage({}) {
                                 <hr />
                                 <br />
                                 <div className="decorate-row5">
-                                    <button className="white-button" onClick={handleHistoryPageClick}>History</button>
+                                    <button className="container-column3 white-button" onClick={handleHistoryPageClick}>
+                                        <img src={history} className="icon2" alt="icon 2" /> 
+                                        History
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -130,7 +147,10 @@ function MainPage({}) {
                                 <hr />
                                 <br />
                                 <div className="decorate-row5">
-                                    <button className="white-button" onClick={handleAddItemPageClick}>Add Item</button>
+                                    <button className="container-column3 white-button" onClick={handleAddItemPageClick}>
+                                        <img src={add} className="icon2" alt="icon 2" /> 
+                                        Add Item
+                                    </button>
                                 </div>
                             </div>
                         </div>
