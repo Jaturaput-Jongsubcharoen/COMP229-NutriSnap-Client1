@@ -109,7 +109,7 @@ const TextSearchPage = () => {
     }
   };
   return (
-    <div className="search-section" style={{textAlign: "center", marginTop: "20px", color: "#f2f0c4" }}>
+    <div className="textsearch_barcode_container">
       <h1>Text Search for Food</h1>
       <h3>Enter the name of the food to search nutritional content</h3>
       <input
