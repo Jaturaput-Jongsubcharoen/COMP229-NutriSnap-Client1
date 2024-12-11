@@ -298,3 +298,13 @@ body {
    border: 2px solid gray;
    padding:10px;
 }
+
+.foodname {
+  color:#FEBCA5;
+}
+
+.buttonstyling {
+  padding: 10px 20px;
+  margin-left:20px;
+  border-radius: 10px;
+}

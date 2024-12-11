@@ -111,25 +111,49 @@ const TextSearchPage = () => {
   return (
     <div className="textsearch_barcode_container">
       <h1>Text Search for Food</h1>
-      <h3>Enter the name of the food to search nutritional content</h3>
+      <h3>Enter the name of the food to search its nutritional content</h3>
       <input
         type="text"
         placeholder="Enter food name to search..."
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
+        style={{width: "280px", padding: "10px 20px", borderRadius:"20px"}}
       />
-      <button onClick={handleSearch}>Search</button>
-      <button onClick={handleSave}>Save</button> {/* Jaturaput */}
+      <button onClick={handleSearch} className="buttonstyling">Search</button>
+      <button onClick={handleSave} className="buttonstyling">Save</button> {/* Jaturaput */}
       {nutrients && (
-        <div>
-          
-          <h4>Nutrient Information</h4>
-          <p>Calories: {nutrients.nf_calories}</p>
-          <p>Protein: {nutrients.nf_protein} g</p>
-          <p>Fat: {nutrients.nf_total_fat} g</p>
-          <p>Carbohydrates: {nutrients.nf_total_carbohydrate} g</p>
-        </div>
-      )}
+            <div>
+              <h2 className="foodname">Food Name : {nutrients.food_name}</h2>
+              <h3>Nutritional Information</h3>
+              <table className='table_NI'>
+                <thead>
+                  <tr>
+                    <th className='table_th_td'>Nutrient</th>
+                    <th className='table_th_td'>Amount</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className='table_th_td'>Calories</td>
+                    <td className='table_th_td'>{nutrients.nf_calories} kilocalories</td>
+                  </tr>
+                  <tr>
+                    <td className='table_th_td'>Protein</td>
+                    <td className='table_th_td'>{nutrients.nf_protein} grams</td>
+                  </tr>
+                  <tr>
+                    <td className='table_th_td'>Fat</td>
+                    <td className='table_th_td'>{nutrients.nf_total_fat} grams</td>
+                  </tr>
+                  <tr>
+                    <td className='table_th_td'>Carbohydrates</td>
+                    <td className='table_th_td'>{nutrients.nf_total_carbohydrate} grams</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          )}
+     
       <div>
         <h4>Saved Nutrient Entries</h4>
         {savedEntries.length > 0 ? (
