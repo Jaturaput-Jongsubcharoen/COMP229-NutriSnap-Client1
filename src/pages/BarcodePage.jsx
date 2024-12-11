@@ -3,16 +3,23 @@ import axios from 'axios';
 import Quagga from 'quagga';
 
 function BarcodePage() {
-    const [barcode, setBarcode] = useState('');
-    const [result, setResult] = useState(null);
+    const [barcode, setBarcode] = useState("");
+    //const [result, setResult] = useState(null);
     const [image, setImage] = useState(null);
     const [nutrients, setNutrients] = useState(null);
+    const [errorMessage, setErrorMessage] = useState("");
 
+    // This section handles the image uploading part
     const handleImageUpload = (event) => {
         setImage(URL.createObjectURL(event.target.files[0]));
       };
     
+    // This section handles image recognition to barcode value using Quagga
       const scanBarcode = () => {
+        if(!image){
+          setErrorMessage("Please upload an image of a barcode first");
+          return;
+        }
         Quagga.decodeSingle({
           src: image,
           numOfWorkers: 0,  // Needs to be 0 when used within node
