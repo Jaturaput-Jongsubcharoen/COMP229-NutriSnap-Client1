@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import logo1 from '../images/logo1.png';
+import history from '../images/history.png';
 import '../styles/History.css';
 
 function HistoryPage() {
@@ -8,6 +10,8 @@ function HistoryPage() {
     const [arrayMongoDB, setArrayMongoDB] = useState([]);
     const [showMongoDBData, setShowMongoDBData] = useState(false);
     const [username, setUsername] = useState("not logged in"); 
+
+    const navigate = useNavigate();
 
     //username
     const fetchUsername = async () => {
@@ -88,11 +92,49 @@ function HistoryPage() {
         }
     };
 
+    const removeItem = async (id) => {
+        try {
+            const token = localStorage.getItem("token");
+
+            if (!token) {
+                console.error('No token found, user might not be logged in.');
+                return;
+            }
+
+            const response = await fetch(`${import.meta.env.VITE_BE_URL}/apiMongo/${id}`, {
+                method: 'DELETE',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                },
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP Error: ${response.status}`);
+            }
+
+            // Update the frontend state after successful deletion
+            setArrayMongoDB(arrayMongoDB.filter((item) => item._id !== id));
+        } catch (error) {
+            console.error('Error deleting item:', error);
+        }
+    };    
+
     // Fetch the hardcoded API data on component mount
     useEffect(() => {
         fetchUsername();
         fetchAPIMongoDB();
     }, []);
+
+    const handleLogout = () => {
+        localStorage.removeItem("token"); 
+        localStorage.removeItem("userID"); 
+        setUsername("not logged in"); 
+        navigate('/MainPage');
+    };
+
+    const handleLoginPageClick = () => {
+        navigate('/login'); // Navigate to the LoginPage
+    };
 
     return (
         <div>
@@ -104,10 +146,21 @@ function HistoryPage() {
             <hr />
             <div className="container-row">
                 <div className="title">
-                    <h1>H I S T O R Y</h1>
+                    <h1>N U T R I - K C A L</h1>
                 </div>
             </div>
             <hr />
+            <div className="container-row">
+                <div className="container-row6">
+                    <div className="container-row7">
+                        <h3>Username: {username}.</h3>
+                     </div>
+                     <div className="container-row8">
+                        <button className="login-logout-button" onClick={handleLoginPageClick}>Login</button>
+                        <button className="login-logout-button" onClick={handleLogout}>Logout</button>
+                    </div>
+                </div>
+            </div>
             <br />
 
             {/*
@@ -126,18 +179,21 @@ function HistoryPage() {
                 </div>
             </div>
             */}
-            <div className="decorate-main-page1">
-                <div className="container-row">
-                    <div className="container-column">
-                        <h2>Explore Your History of Added Items.</h2>
-                    </div>
+
+            <div className="decorate-main-page2">
+                <div className="container-row-icon">
+                    <img src={history} className="icon3" alt="icon 2" />
+                    <h2>H I S T O R Y : {username}</h2>
                 </div>
+
+                {/*
                 <div className="container-row">
                     <div className="decorate-row9">
                         <h3>Username: {username}.</h3>
                     </div>
                 </div>
                 <br />
+                */}
                 
                 <div className="container-row">
                     <div className="container-column1">
@@ -173,6 +229,11 @@ function HistoryPage() {
                                                 <img src={item.aiImage} alt={`${item.name} AI Image`} className="ai-image" />
                                             </p>
                                         )}
+                                        <div className="decorate-row5">
+                                            <button className="white-button" onClick={() => removeItem(item._id)}>
+                                                Remove item
+                                            </button>
+                                        </div>
                                         <br />
                                     </div>
                                 </div>
