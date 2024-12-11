@@ -80,11 +80,11 @@ function BarcodePage() {
           {nutrients && (
             <div>
               <h2>Nutritional Information</h2>
-              <table style = {{ margin: "0 auto", borderCollapse: "collapse"}}>
+              <table className='table_NI'>
                 <thead>
                   <tr>
-                    <th style={{ border:"2px solid black", padding:"10px" }}>Nutrient</th>
-                    <th style={{ border:"2px solid black", padding:"10px" }}>Amount</th>
+                    <th className='table_th_td'>Nutrient</th>
+                    <th className='table_th_td'>Amount</th>
                   </tr>
                 </thead>
                 <tbody>
