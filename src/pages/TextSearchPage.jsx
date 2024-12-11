@@ -109,8 +109,9 @@ const TextSearchPage = () => {
     }
   };
   return (
-    <div className="search-section">
+    <div className="search-section" style={{textAlign: "center", marginTop: "20px", color: "#f2f0c4" }}>
       <h1>Text Search for Food</h1>
+      <h3>Enter the name of the food to search nutritional content</h3>
       <input
         type="text"
         placeholder="Enter food name to search..."
