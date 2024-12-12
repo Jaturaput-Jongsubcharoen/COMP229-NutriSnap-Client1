@@ -48,7 +48,7 @@ const Register = () => {
           <h2>Welcome New User</h2>
           <form onSubmit={handleRegister}>
             <input
-              className="abing-inputstyle"
+              style={{ width: "94%" }}
               type="text"
               placeholder="Username"
               value={username}
@@ -56,7 +56,6 @@ const Register = () => {
               required
             />
             <input
-              className="abing-inputstyle"
               type="email"
               placeholder="Email"
               value={email}
@@ -64,7 +63,6 @@ const Register = () => {
               required
             />
             <input
-              className="abing-inputstyle"
               type="password"
               placeholder="Password"
               value={password}
