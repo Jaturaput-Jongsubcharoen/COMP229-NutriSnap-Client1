@@ -12,7 +12,7 @@ function PredictImagePage() {
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [savedItems, setSavedItems] = useState([]); // State for saved items
+  const [savedItems, setSavedItems] = useState([]); 
   const [arrayMongoDB, setArrayMongoDB] = useState([]);
   const [showMongoDBData, setShowMongoDBData] = useState(false);
   const [username, setUsername] = useState("not logged in");
