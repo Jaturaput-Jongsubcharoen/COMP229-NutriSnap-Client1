@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import logo1 from '../images/logo1.png';
 import { GoogleGenerativeAI } from "@google/generative-ai";
+import '../styles/AI.css';
 
 const genAI = new GoogleGenerativeAI("AIzaSyAMNLbBF6YhV4RHPzybgdCm9TV8nL5Wk3Y");
 const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
@@ -28,16 +29,16 @@ function PredictImagePage() {
               return;
           }
 
-          const response = await fetch(`${import.meta.env.VITE_BE_URL}/getUser`, {
-              method: "GET",
-              headers: {
-                  Authorization: `Bearer ${token}`, // Include token in the Authorization header
-              },
-          });
+      const response = await fetch(`${import.meta.env.VITE_BE_URL}/getUser`, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
-          if (!response.ok) {
-              throw new Error(`HTTP Error: ${response.status}`);
-          }
+      if (!response.ok) {
+        throw new Error(`HTTP Error: ${response.status}`);
+      }
 
           const data = await response.json();
           console.log("Fetched Username:", data.username);
@@ -84,15 +85,6 @@ function PredictImagePage() {
     }
   };
 
-  const [manualInput, setManualInput] = useState({
-    name: "",
-    calories: "",
-    protein: "",
-    carbohydrates: "",
-    fat: "",
-    mealType: "",
-  });
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -118,12 +110,19 @@ function PredictImagePage() {
   };
 
   const saveToDatabase = async (foodData) => {
-    console.log("Sending data to backend:", foodData); // Debugging
+    console.log("Sending data to backend:", foodData);
     try {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        console.error("No token found, user might not be logged in.");
+        return;
+      }
+
       const response = await fetch(`${import.meta.env.VITE_BE_URL}/nutrients`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
         },
         body: JSON.stringify(foodData),
       });
@@ -150,7 +149,6 @@ function PredictImagePage() {
       return;
     }
 
-    // Add manual input to the saved items list
     const foodData = { ...manualInput };
     setSavedItems((prev) => [...prev, foodData]);
     setManualInput({
@@ -162,7 +160,6 @@ function PredictImagePage() {
       mealType: "",
     });
 
-    // Save to database
     await saveToDatabase(foodData);
   };
 
@@ -189,18 +186,18 @@ function PredictImagePage() {
 
   return (
     <>
-    <div className="container-row">
+      <div className="container-row">
         <div className="logo-container">
-              <img src={logo1} className="logo" alt="Custom Logo 1" />
+          <img src={logo1} className="logo" alt="Custom Logo 1" />
         </div>
-    </div>
-    <hr />
-    <div className="container-row">
+      </div>
+      <hr />
+      <div className="container-row">
         <div className="title">
-              <h1>N U T R I - K C A L</h1>
+          <h1>N U T R I - K C A L</h1>
         </div>
-    </div>
-    <hr />
+      </div>
+      <hr />
 
     <div className="container-row top-navbar">
                 <div className="container-row6">
@@ -228,116 +225,98 @@ function PredictImagePage() {
     <div style={{ fontFamily: "Arial, sans-serif", padding: "20px" }}>
       <h1>Food Nutritional Info</h1>
 
-      {/* Input Form */}
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          placeholder="Enter a food item"
-          style={{
-            padding: "10px",
-            fontSize: "16px",
-            marginRight: "10px",
-            width: "300px",
-          }}
-        />
-        <button type="submit" style={{ padding: "10px 20px", fontSize: "16px" }}>
-          Get Info
-        </button>
-      </form>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            placeholder="Enter a food item"
+          />
+          <button type="submit">Get Info</button>
+        </form>
 
-      {loading && <p>Loading...</p>}
-      {error && <p style={{ color: "red" }}>{error}</p>}
+        {loading && <p>Loading...</p>}
+        {error && <p>{error}</p>}
 
-      {result && (
-        <div>
-          <h2>Results:</h2>
-          <p>{result}</p>
-
-          {/* Manual Input Fields */}
+        {result && (
           <div>
-            <h3>Manually Edit Values:</h3>
-            <input
-              type="text"
-              name="name"
-              placeholder="Food Name"
-              value={manualInput.name}
-              onChange={handleInputChange}
-            />
-            <input
-              type="number"
-              name="calories"
-              placeholder="Calories"
-              value={manualInput.calories}
-              onChange={handleInputChange}
-            />
-            <input
-              type="number"
-              name="protein"
-              placeholder="Protein (g)"
-              value={manualInput.protein}
-              onChange={handleInputChange}
-            />
-            <input
-              type="number"
-              name="carbohydrates"
-              placeholder="Carbohydrates (g)"
-              value={manualInput.carbohydrates}
-              onChange={handleInputChange}
-            />
-            <input
-              type="number"
-              name="fat"
-              placeholder="Fat (g)"
-              value={manualInput.fat}
-              onChange={handleInputChange}
-            />
-            <label>
-              Meal Type:
-              <select
-                name="mealType"
-                value={manualInput.mealType}
-                onChange={handleInputChange}
-                style={{ marginLeft: "10px", padding: "5px" }}
-              >
-                <option value="" disabled>
-                  Select Meal Type
-                </option>
-                <option value="Snacks">Snacks</option>
-                <option value="Breakfast">Breakfast</option>
-                <option value="Lunch">Lunch</option>
-                <option value="Dinner">Dinner</option>
-              </select>
-            </label>
-            <button
-              onClick={handleSave}
-            >
-              Save to History
-            </button>
-          </div>
-        </div>
-      )}
+            <h2>Results:</h2>
+            <p>{result}</p>
 
-      {/* History Section */}
-      <div style={{ marginTop: "20px" }}>
-        <h3>History</h3>
-        {savedItems.length === 0 ? (
-          <p>No items saved yet.</p>
-        ) : (
-          savedItems.map((item, index) => (
-            <div key={index} style={{ border: "1px solid #ccc", margin: "10px", padding: "10px" }}>
-              <h4>{item.name}</h4>
-              <p>Calories: {item.calories}</p>
-              <p>Protein: {item.protein}g</p>
-              <p>Carbohydrates: {item.carbohydrates}g</p>
-              <p>Fat: {item.fat}g</p>
-              <p>Meal Type: {item.mealType}</p>
+            <div>
+              <h3>Manually Edit Values:</h3>
+              <input
+                type="text"
+                name="name"
+                placeholder="Food Name"
+                value={manualInput.name}
+                onChange={handleInputChange}
+              />
+              <input
+                type="number"
+                name="calories"
+                placeholder="Calories"
+                value={manualInput.calories}
+                onChange={handleInputChange}
+              />
+              <input
+                type="number"
+                name="protein"
+                placeholder="Protein (g)"
+                value={manualInput.protein}
+                onChange={handleInputChange}
+              />
+              <input
+                type="number"
+                name="carbohydrates"
+                placeholder="Carbohydrates (g)"
+                value={manualInput.carbohydrates}
+                onChange={handleInputChange}
+              />
+              <input
+                type="number"
+                name="fat"
+                placeholder="Fat (g)"
+                value={manualInput.fat}
+                onChange={handleInputChange}
+              />
+              <label>
+                Meal Type:
+                <select
+                  name="mealType"
+                  value={manualInput.mealType}
+                  onChange={handleInputChange}
+                >
+                  <option value="" disabled>Select Meal Type</option>
+                  <option value="Snacks">Snacks</option>
+                  <option value="Breakfast">Breakfast</option>
+                  <option value="Lunch">Lunch</option>
+                  <option value="Dinner">Dinner</option>
+                </select>
+              </label>
+              <button onClick={handleSave}>Save to History</button>
             </div>
-          ))
+          </div>
         )}
+
+        <div className="History">
+          <h3>History</h3>
+          {savedItems.length === 0 ? (
+            <p>No items saved yet.</p>
+          ) : (
+            savedItems.map((item, index) => (
+              <div key={index} style={{ border: "1px solid #ccc", margin: "10px", padding: "10px" }}>
+                <h4>{item.name}</h4>
+                <p>Calories: {item.calories}</p>
+                <p>Protein: {item.protein}g</p>
+                <p>Carbohydrates: {item.carbohydrates}g</p>
+                <p>Fat: {item.fat}g</p>
+                <p>Meal Type: {item.mealType}</p>
+              </div>
+            ))
+          )}
+        </div>
       </div>
-    </div>
     </>
   );
 }
