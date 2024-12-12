@@ -399,6 +399,7 @@ body {
 }
 
 .table_th_td {
+   color: #FFECA1;
    border: 2px solid gray;
    padding:10px;
 }

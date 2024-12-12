@@ -266,7 +266,7 @@ function BarcodePage() {
                             <h4>Recently Stored Nutrient Entry</h4>
                             {storedObject ? (
                                 <ul>
-                                    <li>
+                                    <li className="table_th_td">
                                         {storedObject.name} - Calories: {storedObject.calories}, Protein: {storedObject.protein}g, Fat: {storedObject.fat}g, Carbs: {storedObject.carbohydrates}g
                                     </li>
                                 </ul>
