@@ -3,6 +3,10 @@
   line-height: 1.5;
   font-weight: 400;
   background-color: #4d4744; 
+  background-image: url('./images/backgroundImage.png');
+  background-size: cover; 
+  background-repeat: no-repeat; 
+  background-position: center;
 
   /*
   color-scheme: light dark;

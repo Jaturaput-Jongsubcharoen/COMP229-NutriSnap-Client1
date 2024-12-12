@@ -1,0 +1,149 @@
+/* Base styles */
+body {
+  font-family: "Arial", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.logo-container {
+  max-width: 100%;
+  height: auto;
+}
+
+.logo {
+  max-width: 100%;
+  height: auto;
+}
+
+.title {
+  text-align: center;
+  width: 100%;
+}
+
+h1, h2, h3, h4, p, label {
+  color: white;
+  margin: 10px 0;
+}
+
+h4 {
+  color: azure;
+}
+
+.nutritional-info {
+  padding: 20px;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.input-field {
+  padding: 10px;
+  font-size: 16px;
+  margin-right: 10px;
+  width: 100%;
+  max-width: 300px;
+  border: 1px solid #ccc;
+}
+
+.submit-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.manual-input {
+  margin-top: 20px;
+}
+
+.input-group {
+  margin-bottom: 10px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.select-field {
+  padding: 5px;
+  border: 1px solid #ccc;
+  margin-left: 10px;
+  width: 100%;
+  max-width: 200px;
+}
+
+.history-section {
+  margin-top: 20px;
+}
+
+.history-item {
+  border: 1px solid #ccc;
+  margin: 10px 0;
+  padding: 10px;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .container-row {
+    flex-direction: column;
+  }
+
+  .input-field, .submit-button, .select-field {
+    width: 100%;
+    max-width: none;
+    margin: 10px 0;
+  }
+
+  .manual-input input, .manual-input select {
+    width: 100%;
+    margin: 5px 0;
+  }
+
+  label {
+    margin-left: 0;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .nutritional-info {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  h2, h3 {
+    font-size: 20px;
+  }
+
+  .input-field, .submit-button {
+    font-size: 14px;
+  }
+}
+<<<<<<< Updated upstream
+=======
+.History{
+    margin-top: 20px;
+}
+/*
+h2, h3, p, label{
+    color: white;
+}
+h4{
+    color:azure;
+}
+*/
+>>>>>>> Stashed changes

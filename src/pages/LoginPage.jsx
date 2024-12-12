@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import logo1 from '../images/logo1.png';
 import '../styles/Login.css';
+
 
 
 const Login = () => {
@@ -40,30 +42,46 @@ const Login = () => {
   };
 
   return (
-    <div className="container">
-      <h2>Welcome Back</h2>
-      <form onSubmit={handleLogin}>
-        <input
-          type="text"
-          placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          required
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-        {error && <p style={{ color: 'red' }}>{error}</p>}
-        <button type="submit">Login</button>
-      </form>
-      <div>
-        <p>Don't have an account? <button onClick={() => navigate('/register')}>Register</button></p>
+    <>
+      <div className="container-row">
+        <div className="logo-container">
+          <img src={logo1} className="logo" alt="Custom Logo 1" />
+        </div>
       </div>
-    </div>
+      <hr />
+      <div className="container-row">
+        <div className="title">
+          <h1>N U T R I - K C A L</h1>
+        </div>
+      </div>
+      <hr />
+      <div className="container-row">
+        <div className="container">
+          <h2>Welcome Back</h2>
+          <form onSubmit={handleLogin}>
+            <input
+              type="text"
+              placeholder="Username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+            {error && <p style={{ color: 'red' }}>{error}</p>}
+            <button type="submit">Login</button>
+          </form>
+          <div>
+            <p>Don't have an account? <button onClick={() => navigate('/register')}>Register</button></p>
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
 

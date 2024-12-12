@@ -16,11 +16,11 @@ body {
 }
 
 .logo-container {
-  display: flex; /* Enable Flexbox for the container */
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
-  width: 100%; /* Ensure full row width */
-  height: auto; /* Adjust based on content */
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  width: 100%;
+  height: auto;
 }
 
 .logo {
@@ -30,6 +30,35 @@ body {
   transition: filter 300ms;
   filter: invert(1) brightness(2);
   max-width: 100%; 
+  height: auto;
+}
+
+.icon1 {
+  height: 30%;
+  width: 30%;
+  will-change: filter;
+  transition: filter 300ms;
+  filter: invert(1) brightness(2);
+  height: auto;
+}
+
+.icon2 {
+  height: 30%;
+  width: 30%;
+  will-change: filter;
+  transition: filter 300ms;
+  filter: invert(0) brightness(0);
+  transition: background-color 0.3s ease;
+  height: auto;
+}
+
+.icon3 {
+  height: 10%;
+  width: 10%;
+  will-change: filter;
+  transition: filter 300ms;
+  filter: invert(0) brightness(0);
+  transition: background-color 0.3s ease;
   height: auto;
 }
 
@@ -46,28 +75,70 @@ body {
 .container-row {
   display: flex;
   flex-direction: row;
+  justify-content: center; 
+  align-items: center; 
 }
 
 .container-column {
   display: flex;
   flex-direction: column;
+  justify-content: center; 
+  align-items: center; 
 }
 
 .container-column1 {
-  display: flex;
+  display: flex; 
   flex-direction: column;
   width: 93%;
   gap: 10px;
 }
+
+.container-column2 {
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  flex-direction: column;
+  width: 30%;
+  gap: 2em;
+}
+
+.container-column3 {
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  flex-direction: column;
+  width: 20%;
+  gap: 1.5em;
+}
 /*----------------------------------*/
 /*Jaturaput: please let me know before you are about to change*/
 .decorate-main-page1 {
-  background-color: white; 
+  background-color: white;
   border-radius: 8px; 
   padding: 20px; 
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
   margin: 20px;
+
 }
+
+.decorate-main-page2 {
+  background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+  border-radius: 16px; 
+  padding: 20px; 
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.5); 
+  margin: 20px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.container-row-icon {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 50%;
+  gap: 40px;
+}
+
 
 .container-row1 {
   display: flex; 
@@ -98,9 +169,10 @@ body {
   background-color: #2c2620;
   color: white; 
   padding: 15px;
-  border-radius: 8px; 
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.5); 
+  border-radius: 16px; 
   margin: 10px 0;
-  width: 100%;
+  width: 92%;
 }
 
 .decorate-row5 {
@@ -111,7 +183,7 @@ body {
 }
 
 .container-row6 {
-  color: white;
+  color: rgb(0, 0, 0);
   display: flex; 
   justify-content: flex-end;
   align-items: center;
@@ -121,12 +193,12 @@ body {
 }
 
 .container-row7 {
-  color: white;
+  color: rgb(255, 255, 255);
   display: flex; 
   justify-content: flex-start;
   align-items: center;
   gap: 40px;
-  margin: 20px;
+  margin: 0px 20px;
   width: 50%;
 }
 
@@ -210,68 +282,99 @@ body {
   transition: background-color 0.3s ease; 
 }
 .login-logout-button:hover {
-  background-color: #4e4e4e; 
+  background-color: #4e4e4e;
+  box-shadow: 0 8px 12px rgba(255, 255, 255, 0.5); 
+}
+
+.signup-button {
+  padding: 5px 15px; 
+  background-color: #5b5b5b;
+  color: white; 
+  border: none; 
+  border-radius: 5px; 
+  cursor: pointer; 
+  font-size: 14px; 
+  transition: background-color 0.3s ease; 
+}
+.signup-button:hover {
+  background-color: #222222;
+  box-shadow: 0 8px 12px rgba(255, 255, 255, 0.5);
 }
 /*----------------------------------*/
 .brown1-button {
   background-color: #83766d; 
   color: white;
   border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
+  padding: 50px;
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.5); 
+  border-radius: 20px;
   cursor: pointer;
   font-size: 16px;
-  transition: background-color 0.3s ease;
+  transition: 0.3s ease;
 }
 
 .brown1-button:hover {
   background-color: #4d4744;
+  box-shadow: 0 8px 12px rgba(255, 255, 255, 0.5);
+  transform: scale(1.1);
+  transition: 0.3s ease-in-out;
 }
 
 .brown2-button {
   background-color: #665448; 
   color: white;
   border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
+  padding: 50px;
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.5); 
+  border-radius: 20px;
   cursor: pointer;
   font-size: 16px;
-  transition: background-color 0.3s ease;
+  transition: 0.3s ease;
 }
 
 .brown2-button:hover {
-  background-color: #4d4744; 
+  background-color: #4d4744;
+  box-shadow: 0 8px 12px rgba(255, 255, 255, 0.5);
+  transform: scale(1.1);
+  transition: 0.3s ease-in-out;
 }
 
 .brown3-button {
   background-color: #523f35; 
   color: white;
   border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
+  padding: 50px;
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.5); 
+  border-radius: 20px;
   cursor: pointer;
   font-size: 16px;
-  transition: background-color 0.3s ease;
+  transition: 0.3s ease;
 }
 
 .brown3-button:hover {
-  background-color: #4d4744; 
+  background-color: #4d4744;
+  box-shadow: 0 8px 12px rgba(255, 255, 255, 0.5);
+  transform: scale(1.1);
+  transition: 0.3s ease-in-out;
 }
 
 .white-button {
   background-color: #ffffff; 
   color: rgb(0, 0, 0);
   border: none;
-  padding: 5px 20px;
-  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.5); 
+  border-radius: 14px;
   cursor: pointer;
   font-size: 16px;
-  transition: background-color 0.3s ease;
+  transition: 0.3s ease;
 }
 
 .white-button:hover {
-  background-color: #4d4744; 
-  color: rgb(255, 255, 255);
+  background-color: #c8c3c0; 
+  filter: invert(1);
+  transform: scale(1.1);
+  transition: 0.3s ease-in-out;
 }
 /*----------------------------------*/
 .title {
@@ -286,7 +389,8 @@ body {
 .textsearch_barcode_container {
   text-align: Center;
   margin-top: 20px;
-  color: #f2f0c4; 
+  /*color: #f2f0c4;*/
+  color: #ffffff;
 }
 
 .table_NI {
@@ -308,3 +412,39 @@ body {
   margin-left:20px;
   border-radius: 10px;
 }
+/*----------------------------------*/
+.top-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(hsla(0, 0%, 0%, 0.8), hsla(0, 0%, 100%, 0.0));
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /*border-bottom: 1px solid #ddd;*/
+  z-index: 1000;
+}
+
+/*
+.top-navbar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(hsla(0, 100%, 50%, 0.8), hsla(0, 0%, 100%, 0.0));
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.top-navbar.scrolled {
+  background: linear-gradient(rgb(0, 255, 21), hsla(0, 0%, 100%, 0.0));
+}
+
+.top-navbar.scrolled::before {
+  opacity: 1;
+}
+*/

@@ -1,126 +1,94 @@
-.add-item-page {
-    padding: 20px;
-    font-family: Arial, sans-serif;
-  }
+/*
+h1{
+  text-align: center;
+  margin-bottom: 20px;
+  color: #f2f0c4;
+}
+p{
+  color: #f2f0c4;
+}
+h4{
+  color: #f2f0c4;
+}
+
+label{
+  color: #f2f0c4;
+}
+*/
+.upload-container {
+  margin-bottom: 20px;
+}
+
+.upload-label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+/*
+h3{
+  color: #f2f0c4; even though you put it in a specific .css file, it still affects other pages. But that's fine—I’ve already updated it and pushed it to the repo.
+}
+*/
+
+/* .add-item-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two columns for form and history */
+  /* grid-gap: 20px;
+  padding: 20px;
+  border-radius: 5px;
+  align-items: center;
+}
+.add-item-form-container {
+  padding: 20px;
+  border: 1px solid #eee;
+  border-radius: 5px;
+} */
+.product-info-container {
+  margin-bottom: 20px;
   
-  .page-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-  }
+}
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.meal-type-label {
+  font-size: 0.8rem;
+}
+input[type="text"],
+input[type="number"],
+select {
+  width: 60%;
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+.submit-button {
+  /*background-color: #007bff;*/ /* Replace with your color */
+  color: #000000;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.submit-button:hover {
+  /*background-color: #0067cc;*/ /* Darker shade on hover */
+}
+.product-history-item {
+  padding: 15px;
+  margin-bottom: 10px;
+  border: 1px solid #eee;
+  border-radius: 5px;
+}
+/* .product-info-container {
+  text-align: center;
+} */
+.add-item-form-container{
   
-  .page-header h1 {
-    font-size: 24px;
-    margin: 0;
-  }
-  
-  .back-button {
-    background-color: #007bff;
-    color: white;
-    padding: 8px 12px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .add-item-form {
-    background: #f9f9f9;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    margin-bottom: 20px;
-  }
-  
-  .form-title {
-    margin-bottom: 10px;
-    font-weight: bold;
-  }
-  
-  .input-field {
-    display: block;
-    width: 100%;
-    margin-bottom: 15px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .upload-buttons {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 15px;
-  }
-  
-  .upload-button {
-    padding: 10px 15px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .upload-button.green {
-    background-color: #28a745;
-    color: white;
-  }
-  
-  .upload-button.purple {
-    background-color: #6f42c1;
-    color: white;
-  }
-  
-  .submit-button {
-    display: block;
-    width: 100%;
-    padding: 12px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-size: 16px;
-    cursor: pointer;
-  }
-  
-  .submit-button:hover {
-    background-color: #0056b3;
-  }
-  
-  .history-header {
-    margin-top: 30px;
-    font-size: 20px;
-  }
-  
-  .history-section {
-    margin-top: 20px;
-  }
-  
-  .history-table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .history-table th,
-  .history-table td {
-    border: 1px solid #ddd;
-    padding: 10px;
-    text-align: left;
-  }
-  
-  .history-table th {
-    background-color: #f2f2f2;
-    font-weight: bold;
-  }
-  
-  .select-button {
-    padding: 8px 12px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .select-button:hover {
-    background-color: #0056b3;
-  }
-  
+  text-align: left;
+  margin-left: 20%;
+}
+
