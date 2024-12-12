@@ -235,8 +235,6 @@ function PredictImagePage() {
 
         {result && (
           <div>
-            <h2>Results:</h2>
-            <p>{result}</p>
             
             {loading && <p>Loading...</p>}
             {error && <p>{error}</p>}
