@@ -39,19 +39,6 @@ function Add_Item() {
             return;
         }
 
-        // Decode the token to extract the userID
-        /*
-        const decodedToken = JSON.parse(atob(token.split('.')[1]));  // Decode the JWT token to extract payload
-        const userID = decodedToken.userID;  // Extract the userID from decoded token
-        
-        if (!userID) {
-            console.error("User ID not found in the token.");
-            return;
-        }
-        */
-        // Add userID to the food data
-        //const foodDataWithUserID = { ...foodData, userID };  // Merge the userID into the food data object
-
         // Send the foodData with userID to the backend
         const response = await fetch(`${import.meta.env.VITE_BE_URL}/nutrients`, {
             method: "POST",

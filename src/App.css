@@ -282,7 +282,8 @@ body {
   transition: background-color 0.3s ease; 
 }
 .login-logout-button:hover {
-  background-color: #4e4e4e; 
+  background-color: #4e4e4e;
+  box-shadow: 0 8px 12px rgba(255, 255, 255, 0.5); 
 }
 
 .signup-button {
@@ -296,7 +297,8 @@ body {
   transition: background-color 0.3s ease; 
 }
 .signup-button:hover {
-  background-color: #222222; 
+  background-color: #222222;
+  box-shadow: 0 8px 12px rgba(255, 255, 255, 0.5);
 }
 /*----------------------------------*/
 .brown1-button {
@@ -313,6 +315,7 @@ body {
 
 .brown1-button:hover {
   background-color: #4d4744;
+  box-shadow: 0 8px 12px rgba(255, 255, 255, 0.5);
 }
 
 .brown2-button {
@@ -328,7 +331,8 @@ body {
 }
 
 .brown2-button:hover {
-  background-color: #4d4744; 
+  background-color: #4d4744;
+  box-shadow: 0 8px 12px rgba(255, 255, 255, 0.5);
 }
 
 .brown3-button {
@@ -344,7 +348,8 @@ body {
 }
 
 .brown3-button:hover {
-  background-color: #4d4744; 
+  background-color: #4d4744;
+  box-shadow: 0 8px 12px rgba(255, 255, 255, 0.5);
 }
 
 .white-button {
@@ -376,7 +381,8 @@ body {
 .textsearch_barcode_container {
   text-align: Center;
   margin-top: 20px;
-  color: #f2f0c4; 
+  /*color: #f2f0c4;*/
+  color: #ffffff;
 }
 
 .table_NI {

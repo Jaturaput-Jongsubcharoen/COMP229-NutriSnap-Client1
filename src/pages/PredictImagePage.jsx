@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
+import logo1 from '../images/logo1.png';
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
 const genAI = new GoogleGenerativeAI("AIzaSyAMNLbBF6YhV4RHPzybgdCm9TV8nL5Wk3Y");
@@ -10,6 +12,36 @@ function PredictImagePage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [savedItems, setSavedItems] = useState([]); // State for saved items
+
+    //username
+    const fetchUsername = async () => {
+      try {
+          const token = localStorage.getItem("token"); // Get the token from localStorage
+
+          if (!token) {
+              console.error("No token found, user might not be logged in.");
+              return;
+          }
+
+          const response = await fetch(`${import.meta.env.VITE_BE_URL}/getUser`, {
+              method: "GET",
+              headers: {
+                  Authorization: `Bearer ${token}`, // Include token in the Authorization header
+              },
+          });
+
+          if (!response.ok) {
+              throw new Error(`HTTP Error: ${response.status}`);
+          }
+
+          const data = await response.json();
+          console.log("Fetched Username:", data.username);
+          setUsername(data.username || "not logged in");
+      } catch (error) {
+          console.error("Error fetching username:", error);
+          setUsername("not logged in");
+      }
+  };
 
   const [manualInput, setManualInput] = useState({
     name: "",
@@ -94,6 +126,20 @@ function PredictImagePage() {
   };
 
   return (
+    <>
+    <div className="container-row">
+        <div className="logo-container">
+              <img src={logo1} className="logo" alt="Custom Logo 1" />
+        </div>
+    </div>
+    <hr />
+    <div className="container-row">
+        <div className="title">
+              <h1>N U T R I - K C A L</h1>
+        </div>
+    </div>
+    <hr />
+
     <div style={{ fontFamily: "Arial, sans-serif", padding: "20px" }}>
       <h1>Food Nutritional Info</h1>
 
@@ -207,6 +253,7 @@ function PredictImagePage() {
         )}
       </div>
     </div>
+    </>
   );
 }
 
