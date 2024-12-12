@@ -426,3 +426,7 @@ body {
   /*border-bottom: 1px solid #ddd;*/
   z-index: 1000;
 }
+
+.size-of-input {
+  width: "100%";
+}

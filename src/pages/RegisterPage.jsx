@@ -48,6 +48,7 @@ const Register = () => {
           <h2>Welcome New User</h2>
           <form onSubmit={handleRegister}>
             <input
+              style={{ width: "94%" }}
               type="text"
               placeholder="Username"
               value={username}
@@ -55,6 +56,7 @@ const Register = () => {
               required
             />
             <input
+              style={{ width: "94%" }}
               type="email"
               placeholder="Email"
               value={email}
@@ -62,6 +64,7 @@ const Register = () => {
               required
             />
             <input
+              style={{ width: "94%" }}
               type="password"
               placeholder="Password"
               value={password}

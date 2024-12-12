@@ -3,9 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import logo1 from '../images/logo1.png';
 import '../styles/Login.css';
 
-
-
-const Login = () => {
+function LoginPage() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
@@ -25,15 +23,11 @@ const Login = () => {
     if (response.ok) {
       const data = await response.json();
 
-      
       console.log("Login successful, token:", data.token); // Debugging
       console.log("UserID:", data.userID); // Debugging
 
-
       localStorage.setItem('token', data.token); // Save token to localStorage
-      //------------------------------------------------------------------------------------
       localStorage.setItem('userID', data.userID); // Save userID
-      //------------------------------------------------------------------------------------
       navigate('/main-page'); // Redirect to the dashboard or home page
     } else {
       const errorMessage = await response.text();
@@ -60,6 +54,7 @@ const Login = () => {
           <h2>Welcome Back</h2>
           <form onSubmit={handleLogin}>
             <input
+              style={{ width: "94%" }}
               type="text"
               placeholder="Username"
               value={username}
@@ -67,6 +62,7 @@ const Login = () => {
               required
             />
             <input
+              style={{ width: "94%" }}
               type="password"
               placeholder="Password"
               value={password}
@@ -83,6 +79,6 @@ const Login = () => {
       </div>
     </>
   );
-};
+}
 
-export default Login;
+export default LoginPage;
