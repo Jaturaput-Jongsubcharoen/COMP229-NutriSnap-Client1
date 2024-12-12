@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../styles/AddItem.css';
+import '../App.css';
 
 function Add_Item() {
 

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import logo1 from '../images/logo1.png';
+import '../App.css';
 
 const TextSearchPage = () => {
   const [searchTerm, setSearchTerm] = useState("");

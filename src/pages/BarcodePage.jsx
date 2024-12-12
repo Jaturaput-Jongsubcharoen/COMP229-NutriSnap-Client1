@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import logo1 from '../images/logo1.png';
 import axios from 'axios';
 import Quagga from 'quagga';
+import '../App.css';
 
 function BarcodePage() {
     const [barcode, setBarcode] = useState("");
