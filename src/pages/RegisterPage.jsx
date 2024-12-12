@@ -22,7 +22,7 @@ const Register = () => {
     });
 
     if (response.ok) {
-      navigate('/'); // Redirect to login page after registration
+      navigate('/login');
     } else {
       const errorMessage = await response.text();
       setError(errorMessage);
