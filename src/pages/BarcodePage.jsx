@@ -212,9 +212,9 @@ function BarcodePage() {
                     <div style={{ textAlign: "center", marginTop: "20px", color: "#f2f0c4" }}>
                         <h1>Food Barcode Scanner</h1>
                         <h3>Upload barcode image of food to search nutrients</h3>
-                        <input type="file" accept="image/*" onChange={handleImageUpload} style={{ marginBottom: "10px" }} />
+                        <input type="file" accept="image/*" onChange={handleImageUpload} style={{ marginBottom: "10px", padding: "10px 20px" }} />
                         <br />
-                        <button onClick={scanBarcode} style={{ padding: "10px 20px", marginBottom: "20px" }}>
+                        <button onClick={scanBarcode} className="white-button">
                             Scan Barcode
                         </button>
                         {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
