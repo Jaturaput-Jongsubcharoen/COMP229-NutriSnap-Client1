@@ -198,7 +198,6 @@ function PredictImagePage() {
         </div>
       </div>
       <hr />
-
     <div className="container-row top-navbar">
                 <div className="container-row6">
                     <div className="container-row7">
@@ -221,100 +220,104 @@ function PredictImagePage() {
                 </div>
             </div>
             <br />
+            
+    <div className="container-row">
+      <div className="decorate-main-page2">
+        <div style={{ fontFamily: "Arial, sans-serif", padding: "20px" }}>
+          <h2>F O O D&nbsp;&nbsp;&nbsp;&nbsp;N U T R I T I O N A L&nbsp;&nbsp;&nbsp;&nbsp;I N F O</h2>
 
-    <div style={{ fontFamily: "Arial, sans-serif", padding: "20px" }}>
-      <h1>Food Nutritional Info</h1>
-
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            placeholder="Enter a food item"
-          />
-          <button type="submit">Get Info</button>
-        </form>
-
-        {loading && <p>Loading...</p>}
-        {error && <p>{error}</p>}
-
-        {result && (
-          <div>
-            <h2>Results:</h2>
-            <p>{result}</p>
-
-            <div>
-              <h3>Manually Edit Values:</h3>
+            <form onSubmit={handleSubmit}>
               <input
                 type="text"
-                name="name"
-                placeholder="Food Name"
-                value={manualInput.name}
-                onChange={handleInputChange}
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                placeholder="Enter a food item"
               />
-              <input
-                type="number"
-                name="calories"
-                placeholder="Calories"
-                value={manualInput.calories}
-                onChange={handleInputChange}
-              />
-              <input
-                type="number"
-                name="protein"
-                placeholder="Protein (g)"
-                value={manualInput.protein}
-                onChange={handleInputChange}
-              />
-              <input
-                type="number"
-                name="carbohydrates"
-                placeholder="Carbohydrates (g)"
-                value={manualInput.carbohydrates}
-                onChange={handleInputChange}
-              />
-              <input
-                type="number"
-                name="fat"
-                placeholder="Fat (g)"
-                value={manualInput.fat}
-                onChange={handleInputChange}
-              />
-              <label>
-                Meal Type:
-                <select
-                  name="mealType"
-                  value={manualInput.mealType}
-                  onChange={handleInputChange}
-                >
-                  <option value="" disabled>Select Meal Type</option>
-                  <option value="Snacks">Snacks</option>
-                  <option value="Breakfast">Breakfast</option>
-                  <option value="Lunch">Lunch</option>
-                  <option value="Dinner">Dinner</option>
-                </select>
-              </label>
-              <button onClick={handleSave}>Save to History</button>
+              <button  type="submit">Get Info</button>
+            </form>
+
+            {loading && <p>Loading...</p>}
+            {error && <p>{error}</p>}
+
+            {result && (
+              <div>
+                <h2>Results:</h2>
+                <p>{result}</p>
+
+                <div>
+                  <h3>Manually Edit Values:</h3>
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="Food Name"
+                    value={manualInput.name}
+                    onChange={handleInputChange}
+                  />
+                  <input
+                    type="number"
+                    name="calories"
+                    placeholder="Calories"
+                    value={manualInput.calories}
+                    onChange={handleInputChange}
+                  />
+                  <input
+                    type="number"
+                    name="protein"
+                    placeholder="Protein (g)"
+                    value={manualInput.protein}
+                    onChange={handleInputChange}
+                  />
+                  <input
+                    type="number"
+                    name="carbohydrates"
+                    placeholder="Carbohydrates (g)"
+                    value={manualInput.carbohydrates}
+                    onChange={handleInputChange}
+                  />
+                  <input
+                    type="number"
+                    name="fat"
+                    placeholder="Fat (g)"
+                    value={manualInput.fat}
+                    onChange={handleInputChange}
+                  />
+                  <label>
+                    Meal Type:
+                    <select
+                      name="mealType"
+                      value={manualInput.mealType}
+                      onChange={handleInputChange}
+                    >
+                      <option value="" disabled>Select Meal Type</option>
+                      <option value="Snacks">Snacks</option>
+                      <option value="Breakfast">Breakfast</option>
+                      <option value="Lunch">Lunch</option>
+                      <option value="Dinner">Dinner</option>
+                    </select>
+                  </label>
+                  <button onClick={handleSave}>Save to History</button>
+                </div>
+              </div>
+            )}
+
+            <div className="History">
+              <h3>History</h3>
+              {savedItems.length === 0 ? (
+                <p>No items saved yet.</p>
+              ) : (
+                savedItems.map((item, index) => (
+                  <div key={index} style={{ border: "1px solid #ccc", margin: "10px", padding: "10px" }}>
+                    <h4>{item.name}</h4>
+                    <p>Calories: {item.calories}</p>
+                    <p>Protein: {item.protein}g</p>
+                    <p>Carbohydrates: {item.carbohydrates}g</p>
+                    <p>Fat: {item.fat}g</p>
+                    <p>Meal Type: {item.mealType}</p>
+                  </div>
+                ))
+              )}
             </div>
           </div>
-        )}
-
-        <div className="History">
-          <h3>History</h3>
-          {savedItems.length === 0 ? (
-            <p>No items saved yet.</p>
-          ) : (
-            savedItems.map((item, index) => (
-              <div key={index} style={{ border: "1px solid #ccc", margin: "10px", padding: "10px" }}>
-                <h4>{item.name}</h4>
-                <p>Calories: {item.calories}</p>
-                <p>Protein: {item.protein}g</p>
-                <p>Carbohydrates: {item.carbohydrates}g</p>
-                <p>Fat: {item.fat}g</p>
-                <p>Meal Type: {item.mealType}</p>
-              </div>
-            ))
-          )}
         </div>
       </div>
     </>

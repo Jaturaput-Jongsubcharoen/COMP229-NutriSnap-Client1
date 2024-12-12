@@ -24,7 +24,7 @@ h1 {
 .submit-button {
   padding: 10px 20px;
   font-size: 16px;
-  background-color: #4CAF50; /* Example button color */
+  /*background-color: #4CAF50;*/ /* Example button color */
   color: white;
   border: none;
   cursor: pointer; /* Indicate clickable button */
