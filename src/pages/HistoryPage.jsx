@@ -136,8 +136,12 @@ function HistoryPage() {
         navigate('/login'); // Navigate to the LoginPage
     };
 
+    const handleRegister = () => {
+        navigate('/register'); // Navigate to the Text Search for Food Page
+    };
+
     return (
-        <div>
+        <>
             <div className="container-row">
                 <div className="logo-container">
                     <img src={logo1} className="logo" alt="Custom Logo 1" />
@@ -156,8 +160,18 @@ function HistoryPage() {
                         <h3>Username: {username}.</h3>
                      </div>
                      <div className="container-row8">
-                        <button className="login-logout-button" onClick={handleLoginPageClick}>Login</button>
-                        <button className="login-logout-button" onClick={handleLogout}>Logout</button>
+                        {username !== "not logged in" ? (
+                            <button className="login-logout-button" onClick={handleLogout}>
+                                Logout
+                            </button>
+                        ) : (
+                            <button className="login-logout-button" onClick={handleLoginPageClick}>
+                                Login
+                            </button>
+                        )}
+                        <button className="signup-button" onClick={handleRegister}>
+                            Sign Up
+                        </button>
                     </div>
                 </div>
             </div>
@@ -239,12 +253,12 @@ function HistoryPage() {
                                 </div>
                             ))
                         ) : (
-                            <h2>No items have been stored yet. Please add some items.</h2>
+                            <p>No items have been stored yet. Please add some items.</p>
                         )}
                     </div>        
                 </div>
             </div>
-        </div>
+        </>
     );
 }
 

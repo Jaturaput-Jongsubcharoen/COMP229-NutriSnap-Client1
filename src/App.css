@@ -284,6 +284,20 @@ body {
 .login-logout-button:hover {
   background-color: #4e4e4e; 
 }
+
+.signup-button {
+  padding: 5px 15px; 
+  background-color: #5b5b5b;
+  color: white; 
+  border: none; 
+  border-radius: 5px; 
+  cursor: pointer; 
+  font-size: 14px; 
+  transition: background-color 0.3s ease; 
+}
+.signup-button:hover {
+  background-color: #222222; 
+}
 /*----------------------------------*/
 .brown1-button {
   background-color: #83766d; 

@@ -76,8 +76,12 @@ function MainPage({}) {
         navigate('/text-search'); // Navigate to the Text Search for Food Page
     };
 
+    const handleRegister = () => {
+        navigate('/register'); // Navigate to the Text Search for Food Page
+    };
+
     return (
-        <div>
+        <>
             <div className="container-row">
                 <div className="logo-container">
                     <img src={logo1} className="logo" alt="Custom Logo 1" />
@@ -96,8 +100,18 @@ function MainPage({}) {
                         <h3>Username: {username}.</h3>
                      </div>
                      <div className="container-row8">
-                        <button className="login-logout-button" onClick={handleLoginPageClick}>Login</button>
-                        <button className="login-logout-button" onClick={handleLogout}>Logout</button>
+                        {username !== "not logged in" ? (
+                            <button className="login-logout-button" onClick={handleLogout}>
+                                Logout
+                            </button>
+                        ) : (
+                            <button className="login-logout-button" onClick={handleLoginPageClick}>
+                                Login
+                            </button>
+                        )}
+                        <button className="signup-button" onClick={handleRegister}>
+                            Sign Up
+                        </button>
                     </div>
                 </div>
             </div>
@@ -158,7 +172,7 @@ function MainPage({}) {
                     </div>
                 </div>
             </div>
-        </div>
+        </>
     );
 }
 
