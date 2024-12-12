@@ -96,19 +96,23 @@ function Add_Item() {
   };
 
   return (
-    <div>
-      <div>
-        <h1>Add Item</h1>
+    <div className="add-item-container">
+      <h1>Add Item</h1>
+      <div className="add-item-form-container">
+        
         <form onSubmit={submit}>
-          <div>
-            <p>Product Information</p>
+          <div className="product-info-container">
+            <p>Fill Product Information</p>
             <input
               type="text"
               name="name"
+              size={40}
               value={productDetails.name}
               onChange={userInput}
               placeholder="Product Name"
               required
+              className="product-name-input"
+              siz
             />
             <input
               type="number"
@@ -116,6 +120,7 @@ function Add_Item() {
               value={productDetails.calories}
               onChange={userInput}
               placeholder="Calories"
+              className="calories-input"
             />
             <input
               type="number"
@@ -123,6 +128,7 @@ function Add_Item() {
               value={productDetails.protein}
               onChange={userInput}
               placeholder="Protein (g)"
+              className="protein-input"
             />
             <input
               type="number"
@@ -130,6 +136,7 @@ function Add_Item() {
               value={productDetails.carbohydrates}
               onChange={userInput}
               placeholder="Carbohydrates (g)"
+              className="carbohydrates-input"
             />
             <input
               type="number"
@@ -137,44 +144,43 @@ function Add_Item() {
               value={productDetails.fat}
               onChange={userInput}
               placeholder="Fat (g)"
+              className="fat-input"
             />
-            <label>
+            <label className="meal-type-label">
               Meal Type:
-              <select
-                name="mealType"
-                value={productDetails.mealType}
-                onChange={userInput}
-                required
-              >
-                <option value="" disabled>
-                  Select Meal Type
-                </option>
-                <option value="Snacks">Snacks</option>
-                <option value="Breakfast">Breakfast</option>
-                <option value="Lunch">Lunch</option>
-                <option value="Dinner">Dinner</option>
-              </select>
             </label>
+            <select
+              name="mealType"
+              value={productDetails.mealType}
+              onChange={userInput}
+              required
+              className="meal-type-select"
+            >
+              <option value="" disabled>
+                Select Meal Type
+              </option>
+              <option value="Snacks">Snacks</option>
+              <option value="Breakfast">Breakfast</option>
+              <option value="Lunch">Lunch</option>
+              <option value="Dinner">Dinner</option>
+            </select>
           </div>
-          <div>
-            <label>
+          <div className="upload-container">
+            <label className="upload-label">
               Upload Barcode:
-              <input
-                type="file"
-                accept="image/*"
-                onChange={(e) => handleFileChange(e, 'barcode')}
-              />
             </label>
-            <label>
-              Upload Image for AI:
-              <input
-                type="file"
-                accept="image/*"
-                onChange={(e) => handleFileChange(e, 'aiImage')}
-              />
-            </label>
+            <input
+              type="file"
+              accept="image/*"
+              onChange={(e) => handleFileChange(e, 'barcode')}
+              className="barcode-upload"
+            />
+            
+           
           </div>
-          <button type="submit">Submit</button>
+          <button type="submit" className="submit-button">
+            Submit
+          </button>
         </form>
 
         <h3>History</h3>
@@ -183,7 +189,7 @@ function Add_Item() {
             <p>No products added yet.</p>
           ) : (
             products.map((product, index) => (
-              <div key={index}>
+              <div key={index} className="product-history-item">
                 <h4>{product.name}</h4>
                 <p>Calories: {product.calories}</p>
                 <p>Protein: {product.protein}g</p>
