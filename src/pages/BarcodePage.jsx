@@ -11,6 +11,7 @@ function BarcodePage() {
     const [image, setImage] = useState(null);
     const [nutrients, setNutrients] = useState(null);
     const [errorMessage, setErrorMessage] = useState("");
+    const [mealType, setMealType] = useState(""); // Added Mealt Type Category
     const [showMongoDBData, setShowMongoDBData] = useState(false);
     const [arrayMongoDB, setArrayMongoDB] = useState([]);
     const [username, setUsername] = useState("not logged in"); 
