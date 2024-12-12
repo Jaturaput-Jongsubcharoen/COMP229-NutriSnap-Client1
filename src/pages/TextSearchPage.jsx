@@ -47,22 +47,18 @@ const TextSearchPage = () => {
     try {
         console.log(import.meta.env);
         console.log('VITE_BE_URL:', import.meta.env.VITE_BE_URL); // Debugging
-        //------------------------------------------------------------------------------------
-        //const userID = localStorage.getItem("userID"); // Get the userID from localStorage
         const token = localStorage.getItem("token"); // Get the token to pass as Authorization header
 
         if (!token) {
             console.error('No token or userID found, user might not be logged in.');
             return;
         }
-        //------------------------------------------------------------------------------------
+
         const response = await fetch(`${import.meta.env.VITE_BE_URL}/apiMongo`, {
-            //------------------------------------------------------------------------------------
             method: 'GET',
             headers: {
               'Authorization': `Bearer ${token}`, // Add the token here
             },
-            //------------------------------------------------------------------------------------
         });
       
         if (!response.ok) {
@@ -81,21 +77,19 @@ const TextSearchPage = () => {
   const fetchSavedEntries = async (foodData) => {
     console.log("Sending data to backend:", foodData);
     try {
-      // Get the JWT token from localStorage
       const token = localStorage.getItem("token");
       if (!token) {
           console.error("No token found, user might not be logged in.");
           return;
       }
 
-      // Send the foodData with userID to the backend
       const response = await fetch(`${import.meta.env.VITE_BE_URL}/nutrients`, {
           method: "POST",
           headers: {
               "Content-Type": "application/json",
               "Authorization": `Bearer ${token}`,
           },
-          body: JSON.stringify(foodData), // Send foodData with userID
+          body: JSON.stringify(foodData),
       });
 
       if (!response.ok) {
@@ -142,30 +136,36 @@ const TextSearchPage = () => {
       console.error("Error fetching nutrient data:", error);
     }
   };
-  //-----------------------------------------------------------------------------------
+
   const saveToDatabase = async (foodData) => {
     try {
-      //--------------------------------
       const token = localStorage.getItem("token");
       if (!token) {
           console.error("No token found, user might not be logged in.");
           return;
       }
-      //--------------------------------
+
       const response = await fetch(`${import.meta.env.VITE_BE_URL}/nutrients`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          //--------------------------------
           "Authorization": `Bearer ${token}`,
-          //--------------------------------
         },
-        body: JSON.stringify(foodData),
+        body: JSON.stringify({
+          name: foodData.food_name,
+          calories: foodData.nf_calories,
+          protein: foodData.nf_protein,
+          carbohydrates: foodData.nf_total_carbohydrate,
+          fat: foodData.nf_total_fat,
+          mealType: "default", // You can change this to the appropriate meal type
+        }),
       });
 
       if (!response.ok) {
         throw new Error(`Failed to save data to database: ${response.status}`);
       }
+
+      console.log("Data saved successfully:", await response.json());
     } catch (error) {
       console.error("Error saving data to database:", error);
     }
@@ -212,7 +212,6 @@ const TextSearchPage = () => {
     fetchSavedEntries();
   }, []);
 
-
   const handleLogout = () => {
     localStorage.removeItem("token"); 
     localStorage.removeItem("userID"); 
@@ -243,7 +242,7 @@ const TextSearchPage = () => {
         </div>
       </div>
       <hr />
-      <div className="container-row">
+      <div className="container-row top-navbar">
                 <div className="container-row6">
                     <div className="container-row7">
                         <h4>Username: {username}.</h4>

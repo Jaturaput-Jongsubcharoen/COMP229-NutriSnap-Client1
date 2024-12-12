@@ -12,6 +12,11 @@ function PredictImagePage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [savedItems, setSavedItems] = useState([]); // State for saved items
+  const [arrayMongoDB, setArrayMongoDB] = useState([]);
+  const [showMongoDBData, setShowMongoDBData] = useState(false);
+  const [username, setUsername] = useState("not logged in"); 
+
+  const navigate = useNavigate();
 
     //username
     const fetchUsername = async () => {
@@ -41,6 +46,42 @@ function PredictImagePage() {
           console.error("Error fetching username:", error);
           setUsername("not logged in");
       }
+  };
+
+  // fetch data from MongoDB
+  const fetchAPIMongoDB = async () => {
+    try {
+        console.log(import.meta.env);
+        console.log('VITE_BE_URL:', import.meta.env.VITE_BE_URL); // Debugging
+        //------------------------------------------------------------------------------------
+        //const userID = localStorage.getItem("userID"); // Get the userID from localStorage
+        const token = localStorage.getItem("token"); // Get the token to pass as Authorization header
+
+        if (!token) {
+            console.error('No token or userID found, user might not be logged in.');
+            return;
+        }
+        //------------------------------------------------------------------------------------
+        const response = await fetch(`${import.meta.env.VITE_BE_URL}/apiMongo`, {
+            //------------------------------------------------------------------------------------
+            method: 'GET',
+            headers: {
+              'Authorization': `Bearer ${token}`, // Add the token here
+            },
+            //------------------------------------------------------------------------------------
+        });
+      
+        if (!response.ok) {
+            throw new Error(`HTTP Error: ${response.status}`);
+        }
+
+        const data = await response.json();
+        console.log('API Mongo Response:', data.items);
+        setArrayMongoDB(data.items);
+        setShowMongoDBData(true);
+    } catch (error) {
+        console.error('Error fetching data (API Mongo Response):', error);
+    }
   };
 
   const [manualInput, setManualInput] = useState({
@@ -125,6 +166,27 @@ function PredictImagePage() {
     await saveToDatabase(foodData);
   };
 
+  // Fetch the hardcoded API data on component mount
+  useEffect(() => {
+    fetchUsername();
+    fetchAPIMongoDB();
+  }, []);
+
+  const handleLogout = () => {
+      localStorage.removeItem("token"); 
+      localStorage.removeItem("userID"); 
+      setUsername("not logged in"); 
+      navigate('/MainPage');
+  };
+
+  const handleLoginPageClick = () => {
+      navigate('/login'); // Navigate to the LoginPage
+  };
+
+  const handleRegister = () => {
+      navigate('/register'); // Navigate to the Text Search for Food Page
+  };
+
   return (
     <>
     <div className="container-row">
@@ -139,6 +201,29 @@ function PredictImagePage() {
         </div>
     </div>
     <hr />
+
+    <div className="container-row top-navbar">
+                <div className="container-row6">
+                    <div className="container-row7">
+                        <h4>Username: {username}.</h4>
+                     </div>
+                     <div className="container-row8">
+                        {username !== "not logged in" ? (
+                            <button className="login-logout-button" onClick={handleLogout}>
+                                Logout
+                            </button>
+                        ) : (
+                            <button className="login-logout-button" onClick={handleLoginPageClick}>
+                                Login
+                            </button>
+                        )}
+                        <button className="signup-button" onClick={handleRegister}>
+                            Sign Up
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <br />
 
     <div style={{ fontFamily: "Arial, sans-serif", padding: "20px" }}>
       <h1>Food Nutritional Info</h1>
