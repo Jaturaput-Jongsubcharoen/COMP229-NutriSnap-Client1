@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import logo1 from '../images/logo1.png';
 import history from '../images/history.png';
-import Navbar from './Navbar';
 import '../styles/History.css';
 
 function HistoryPage() {
@@ -11,6 +10,38 @@ function HistoryPage() {
     const [arrayMongoDB, setArrayMongoDB] = useState([]);
     const [showMongoDBData, setShowMongoDBData] = useState(false);
     const [username, setUsername] = useState("not logged in"); 
+
+    const navigate = useNavigate();
+
+    //username
+    const fetchUsername = async () => {
+        try {
+            const token = localStorage.getItem("token"); // Get the token from localStorage
+
+            if (!token) {
+                console.error("No token found, user might not be logged in.");
+                return;
+            }
+
+            const response = await fetch(`${import.meta.env.VITE_BE_URL}/getUser`, {
+                method: "GET",
+                headers: {
+                    Authorization: `Bearer ${token}`, // Include token in the Authorization header
+                },
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP Error: ${response.status}`);
+            }
+
+            const data = await response.json();
+            console.log("Fetched Username:", data.username);
+            setUsername(data.username || "not logged in");
+        } catch (error) {
+            console.error("Error fetching username:", error);
+            setUsername("not logged in");
+        }
+    };
 
     // Function to fetch hardcoded API data
     /*
@@ -32,7 +63,7 @@ function HistoryPage() {
             console.log('VITE_BE_URL:', import.meta.env.VITE_BE_URL); // Debugging
             //------------------------------------------------------------------------------------
             //const userID = localStorage.getItem("userID"); // Get the userID from localStorage
-            const token = localStorage.getItem("token");
+            const token = localStorage.getItem("token"); // Get the token to pass as Authorization header
 
             if (!token) {
                 console.error('No token or userID found, user might not be logged in.');
@@ -90,12 +121,27 @@ function HistoryPage() {
 
     // Fetch the hardcoded API data on component mount
     useEffect(() => {
+        fetchUsername();
         fetchAPIMongoDB();
     }, []);
 
+    const handleLogout = () => {
+        localStorage.removeItem("token"); 
+        localStorage.removeItem("userID"); 
+        setUsername("not logged in"); 
+        navigate('/MainPage');
+    };
+
+    const handleLoginPageClick = () => {
+        navigate('/login'); 
+    };
+
+    const handleRegister = () => {
+        navigate('/register'); 
+    };
+
     return (
         <>
-            <Navbar />
             <div className="container-row">
                 <div className="logo-container">
                     <img src={logo1} className="logo" alt="Custom Logo 1" />
@@ -108,6 +154,27 @@ function HistoryPage() {
                 </div>
             </div>
             <hr />
+            <div className="container-row top-navbar">
+                <div className="container-row6">
+                    <div className="container-row7">
+                        <h4>Username: {username}</h4>
+                     </div>
+                     <div className="container-row8">
+                        {username !== "not logged in" ? (
+                            <button className="login-logout-button" onClick={handleLogout}>
+                                Logout
+                            </button>
+                        ) : (
+                            <button className="login-logout-button" onClick={handleLoginPageClick}>
+                                Login
+                            </button>
+                        )}
+                        <button className="signup-button" onClick={handleRegister}>
+                            Sign Up
+                        </button>
+                    </div>
+                </div>
+            </div>
             <br />
 
             {/*
@@ -153,16 +220,16 @@ function HistoryPage() {
                                             <strong>Name:</strong> {item.name}
                                         </p>
                                         <p>
-                                            <strong>Calories:</strong> {item.calories} kilocalories
+                                            <strong>Calories:</strong> {item.calories}
                                         </p>
                                         <p>
-                                            <strong>Protein:</strong> {item.protein} grams
+                                            <strong>Protein:</strong> {item.protein}
                                         </p>
                                         <p>
-                                            <strong>Fat:</strong> {item.fat} grams
+                                            <strong>Fat:</strong> {item.fat}
                                         </p>
                                         <p>
-                                            <strong>Carbohydrates:</strong> {item.carbohydrates} grams
+                                            <strong>Carbohydrates:</strong> {item.carbohydrates}
                                         </p>
                                         <p>
                                             <strong>Meal Type:</strong> {item.mealType}
