@@ -122,7 +122,7 @@ body {
 }
 
 .decorate-main-page2 {
-  background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent background */
+  background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
   border-radius: 8px; 
   padding: 20px; 
   box-shadow: 0 8px 12px rgba(0, 0, 0, 0.5); 
