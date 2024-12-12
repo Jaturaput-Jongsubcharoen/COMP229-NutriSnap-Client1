@@ -227,6 +227,7 @@ function PredictImagePage() {
           />
           <button type="submit">Get Info</button>
         </form>
+      </div>
 
         {loading && <p>Loading...</p>}
         {error && <p>{error}</p>}
@@ -235,81 +236,91 @@ function PredictImagePage() {
           <div>
             <h2>Results:</h2>
             <p>{result}</p>
+            
+            {loading && <p>Loading...</p>}
+            {error && <p>{error}</p>}
 
-            <div>
-              <h3>Manually Edit Values:</h3>
-              <input
-                type="text"
-                name="name"
-                placeholder="Food Name"
-                value={manualInput.name}
-                onChange={handleInputChange}
-              />
-              <input
-                type="number"
-                name="calories"
-                placeholder="Calories"
-                value={manualInput.calories}
-                onChange={handleInputChange}
-              />
-              <input
-                type="number"
-                name="protein"
-                placeholder="Protein (g)"
-                value={manualInput.protein}
-                onChange={handleInputChange}
-              />
-              <input
-                type="number"
-                name="carbohydrates"
-                placeholder="Carbohydrates (g)"
-                value={manualInput.carbohydrates}
-                onChange={handleInputChange}
-              />
-              <input
-                type="number"
-                name="fat"
-                placeholder="Fat (g)"
-                value={manualInput.fat}
-                onChange={handleInputChange}
-              />
-              <label>
-                Meal Type:
-                <select
-                  name="mealType"
-                  value={manualInput.mealType}
-                  onChange={handleInputChange}
-                >
-                  <option value="" disabled>Select Meal Type</option>
-                  <option value="Snacks">Snacks</option>
-                  <option value="Breakfast">Breakfast</option>
-                  <option value="Lunch">Lunch</option>
-                  <option value="Dinner">Dinner</option>
-                </select>
-              </label>
-              <button onClick={handleSave}>Save to History</button>
+            {result && (
+              <div>
+                <h2>Results:</h2>
+                <p>{result}</p>
+
+                <div>
+                  <h3>Manually Edit Values:</h3>
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="Food Name"
+                    value={manualInput.name}
+                    onChange={handleInputChange}
+                  />
+                  <input
+                    type="number"
+                    name="calories"
+                    placeholder="Calories"
+                    value={manualInput.calories}
+                    onChange={handleInputChange}
+                  />
+                  <input
+                    type="number"
+                    name="protein"
+                    placeholder="Protein (g)"
+                    value={manualInput.protein}
+                    onChange={handleInputChange}
+                  />
+                  <input
+                    type="number"
+                    name="carbohydrates"
+                    placeholder="Carbohydrates (g)"
+                    value={manualInput.carbohydrates}
+                    onChange={handleInputChange}
+                  />
+                  <input
+                    type="number"
+                    name="fat"
+                    placeholder="Fat (g)"
+                    value={manualInput.fat}
+                    onChange={handleInputChange}
+                  />
+                  <label>
+                    Meal Type:
+                    <select
+                      name="mealType"
+                      value={manualInput.mealType}
+                      onChange={handleInputChange}
+                    >
+                      <option value="" disabled>Select Meal Type</option>
+                      <option value="Snacks">Snacks</option>
+                      <option value="Breakfast">Breakfast</option>
+                      <option value="Lunch">Lunch</option>
+                      <option value="Dinner">Dinner</option>
+                    </select>
+                  </label>
+                  <button onClick={handleSave}>Save to History</button>
+                </div>
+              </div>
+            )}
+
+            <div className="History">
+              <h3>History</h3>
+              {savedItems.length === 0 ? (
+                <p>No items saved yet.</p>
+              ) : (
+                savedItems.map((item, index) => (
+                  <div key={index} style={{ border: "1px solid #ccc", margin: "10px", padding: "10px" }}>
+                    <h4>{item.name}</h4>
+                    <p>Calories: {item.calories}</p>
+                    <p>Protein: {item.protein}g</p>
+                    <p>Carbohydrates: {item.carbohydrates}g</p>
+                    <p>Fat: {item.fat}g</p>
+                    <p>Meal Type: {item.mealType}</p>
+                  </div>
+                ))
+              )}
             </div>
           </div>
-        )}
-
-        <div className="History">
-          <h3>History</h3>
-          {savedItems.length === 0 ? (
-            <p>No items saved yet.</p>
-          ) : (
-            savedItems.map((item, index) => (
-              <div key={index} style={{ border: "1px solid #ccc", margin: "10px", padding: "10px" }}>
-                <h4>{item.name}</h4>
-                <p>Calories: {item.calories}</p>
-                <p>Protein: {item.protein}g</p>
-                <p>Carbohydrates: {item.carbohydrates}g</p>
-                <p>Fat: {item.fat}g</p>
-                <p>Meal Type: {item.mealType}</p>
-              </div>
-            ))
-          )}
-        </div>
-      </div>
+        )
+      }
     </>
   );
 }
