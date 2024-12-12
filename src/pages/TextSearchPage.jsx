@@ -1,42 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from 'react-router-dom';
-import logo1 from '../images/logo1.png';
+import Navbar from "./Navbar";
+import logo1 from "../images/logo1.png";
 
 const TextSearchPage = () => {
     const [searchTerm, setSearchTerm] = useState("");
     const [nutrients, setNutrients] = useState(null);
     const [storedObject, setStoredObject] = useState(null); // State for the most recently stored object
-    const [username, setUsername] = useState("not logged in");
-
-    const navigate = useNavigate();
-
-    // Fetch username
-    const fetchUsername = async () => {
-        try {
-            const token = localStorage.getItem("token");
-            if (!token) {
-                console.error("No token found, user might not be logged in.");
-                return;
-            }
-
-            const response = await fetch(`${import.meta.env.VITE_BE_URL}/getUser`, {
-                method: "GET",
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-            });
-
-            if (!response.ok) {
-                throw new Error(`HTTP Error: ${response.status}`);
-            }
-
-            const data = await response.json();
-            setUsername(data.username || "not logged in");
-        } catch (error) {
-            console.error("Error fetching username:", error);
-            setUsername("not logged in");
-        }
-    };
 
     // Save data to database
     const saveToDatabase = async () => {
@@ -65,7 +34,7 @@ const TextSearchPage = () => {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    "Authorization": `Bearer ${token}`,
+                    Authorization: `Bearer ${token}`,
                 },
                 body: JSON.stringify(payload),
             });
@@ -115,27 +84,10 @@ const TextSearchPage = () => {
         }
     };
 
-    const handleLogout = () => {
-        localStorage.removeItem("token");
-        setUsername("not logged in");
-        navigate('/MainPage');
-    };
-
-    const handleLoginPageClick = () => {
-        navigate('/login');
-    };
-
-    const handleRegister = () => {
-        navigate('/register');
-    };
-
-    // Fetch username on component mount
-    useEffect(() => {
-        fetchUsername(); // Fetch the username
-    }, []);
-
     return (
         <>
+            <Navbar />
+
             <div className="container-row">
                 <div className="logo-container">
                     <img src={logo1} className="logo" alt="Custom Logo 1" />
@@ -148,70 +100,50 @@ const TextSearchPage = () => {
                 </div>
             </div>
             <hr />
-            <div className="container-row top-navbar">
-                <div className="container-row6">
-                  <div className="container-row7">
-                    <h4>Username: {username}</h4>
-                  </div>
-                     <div className="container-row8">
-                        {username !== "not logged in" ? (
-                            <button className="login-logout-button" onClick={handleLogout}>
-                                Logout
-                            </button>
-                        ) : (
-                            <button className="login-logout-button" onClick={handleLoginPageClick}>
-                                Login
-                            </button>
-                        )}
-                        <button className="signup-button" onClick={handleRegister}>
-                            Sign Up
-                        </button>
-                    </div>
-                </div>
-            </div>
+
             <br />
             <div className="container-row">
                 <div className="decorate-main-page2">
                     <div className="textsearch_barcode_container">
-                        <p>T E X T&nbsp;&nbsp;&nbsp;&nbsp;S E A R C H&nbsp;&nbsp;&nbsp;&nbsp;F O R&nbsp;&nbsp;&nbsp;&nbsp;F O O D</p>
+                        <h2>T E X T&nbsp;&nbsp;&nbsp;&nbsp;S E A R C H&nbsp;&nbsp;&nbsp;&nbsp;F O R&nbsp;&nbsp;&nbsp;&nbsp;F O O D</h2>
                         <p>Enter the name of the food to search its nutritional content</p>
                         <div className="decorate-row5">
-                        <input
-                            type="text"
-                            placeholder="Enter food name to search..."
-                            value={searchTerm}
-                            onChange={(e) => setSearchTerm(e.target.value)}
-                            style={{ width: "280px", padding: "10px 20px", borderRadius: "20px" }}
-                        />
-                        <button onClick={handleSearch} className="white-button">Search</button>
+                            <input
+                                type="text"
+                                placeholder="Enter food name to search..."
+                                value={searchTerm}
+                                onChange={(e) => setSearchTerm(e.target.value)}
+                                style={{ width: "280px", padding: "10px 20px", borderRadius: "20px" }}
+                            />
+                            <button onClick={handleSearch} className="white-button">Search</button>
                         </div>
                         {nutrients && (
                             <div>
                                 <h2 className="foodname">Food Name : {nutrients.food_name}</h2>
                                 <h3>Nutritional Information</h3>
-                                <table className='table_NI'>
+                                <table className="table_NI">
                                     <thead>
                                         <tr>
-                                            <th className='table_th_td'>Nutrient</th>
-                                            <th className='table_th_td'>Amount</th>
+                                            <th className="table_th_td">Nutrient</th>
+                                            <th className="table_th_td">Amount</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td className='table_th_td'>Calories</td>
-                                            <td className='table_th_td'>{nutrients.nf_calories} kilocalories</td>
+                                            <td className="table_th_td">Calories</td>
+                                            <td className="table_th_td">{nutrients.nf_calories} kilocalories</td>
                                         </tr>
                                         <tr>
-                                            <td className='table_th_td'>Protein</td>
-                                            <td className='table_th_td'>{nutrients.nf_protein} grams</td>
+                                            <td className="table_th_td">Protein</td>
+                                            <td className="table_th_td">{nutrients.nf_protein} grams</td>
                                         </tr>
                                         <tr>
-                                            <td className='table_th_td'>Fat</td>
-                                            <td className='table_th_td'>{nutrients.nf_total_fat} grams</td>
+                                            <td className="table_th_td">Fat</td>
+                                            <td className="table_th_td">{nutrients.nf_total_fat} grams</td>
                                         </tr>
                                         <tr>
-                                            <td className='table_th_td'>Carbohydrates</td>
-                                            <td className='table_th_td'>{nutrients.nf_total_carbohydrate} grams</td>
+                                            <td className="table_th_td">Carbohydrates</td>
+                                            <td className="table_th_td">{nutrients.nf_total_carbohydrate} grams</td>
                                         </tr>
                                     </tbody>
                                 </table>

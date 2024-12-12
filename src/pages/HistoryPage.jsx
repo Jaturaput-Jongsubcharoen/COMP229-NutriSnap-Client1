@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import logo1 from '../images/logo1.png';
 import history from '../images/history.png';
+import Navbar from './Navbar';
 import '../styles/History.css';
 
 function HistoryPage() {
@@ -10,38 +11,6 @@ function HistoryPage() {
     const [arrayMongoDB, setArrayMongoDB] = useState([]);
     const [showMongoDBData, setShowMongoDBData] = useState(false);
     const [username, setUsername] = useState("not logged in"); 
-
-    const navigate = useNavigate();
-
-    //username
-    const fetchUsername = async () => {
-        try {
-            const token = localStorage.getItem("token"); 
-
-            if (!token) {
-                console.error("No token found, user might not be logged in.");
-                return;
-            }
-
-            const response = await fetch(`${import.meta.env.VITE_BE_URL}/getUser`, {
-                method: "GET",
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-            });
-
-            if (!response.ok) {
-                throw new Error(`HTTP Error: ${response.status}`);
-            }
-
-            const data = await response.json();
-            console.log("Fetched Username:", data.username);
-            setUsername(data.username || "not logged in");
-        } catch (error) {
-            console.error("Error fetching username:", error);
-            setUsername("not logged in");
-        }
-    };
 
     // Function to fetch hardcoded API data
     /*
@@ -121,27 +90,12 @@ function HistoryPage() {
 
     // Fetch the hardcoded API data on component mount
     useEffect(() => {
-        fetchUsername();
         fetchAPIMongoDB();
     }, []);
 
-    const handleLogout = () => {
-        localStorage.removeItem("token"); 
-        localStorage.removeItem("userID"); 
-        setUsername("not logged in"); 
-        navigate('/MainPage');
-    };
-
-    const handleLoginPageClick = () => {
-        navigate('/login'); 
-    };
-
-    const handleRegister = () => {
-        navigate('/register'); 
-    };
-
     return (
         <>
+            <Navbar />
             <div className="container-row">
                 <div className="logo-container">
                     <img src={logo1} className="logo" alt="Custom Logo 1" />
@@ -154,27 +108,6 @@ function HistoryPage() {
                 </div>
             </div>
             <hr />
-            <div className="container-row top-navbar">
-                <div className="container-row6">
-                    <div className="container-row7">
-                        <h4>Username: {username}</h4>
-                     </div>
-                     <div className="container-row8">
-                        {username !== "not logged in" ? (
-                            <button className="login-logout-button" onClick={handleLogout}>
-                                Logout
-                            </button>
-                        ) : (
-                            <button className="login-logout-button" onClick={handleLoginPageClick}>
-                                Login
-                            </button>
-                        )}
-                        <button className="signup-button" onClick={handleRegister}>
-                            Sign Up
-                        </button>
-                    </div>
-                </div>
-            </div>
             <br />
 
             {/*
