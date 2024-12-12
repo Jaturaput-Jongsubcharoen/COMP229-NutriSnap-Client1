@@ -197,7 +197,9 @@ function BarcodePage() {
                     </div>
                 </div>
             </div>
-            <br />    
+            <br />
+          <div className="container-row">
+          <div className="decorate-main-page2">
           <div className="container-row">
             <div style={{textAlign: "center", marginTop: "20px", color: "#f2f0c4" }}>
               <h1>Food Barcode Scanner</h1>
@@ -244,6 +246,8 @@ function BarcodePage() {
                 </div>
               )}
             </div>
+          </div>
+          </div>
           </div>
         </>
       );

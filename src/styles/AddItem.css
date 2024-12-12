@@ -10,6 +10,7 @@ p{
 h4{
   color: #f2f0c4;
 }
+
 label{
   color: #f2f0c4;
 }
@@ -23,9 +24,13 @@ label{
   margin-bottom: 5px;
   font-weight: bold;
 }
+
+/*
 h3{
-  color: #f2f0c4;
+  color: #f2f0c4; even though you put it in a specific .css file, it still affects other pages. But that's fine—I’ve already updated it and pushed it to the repo.
 }
+*/
+
 /* .add-item-container {
   display: grid;
   grid-template-columns: 1fr 1fr; /* Two columns for form and history */
@@ -38,7 +43,7 @@ h3{
   padding: 20px;
   border: 1px solid #eee;
   border-radius: 5px;
-} */ */
+} */
 .product-info-container {
   margin-bottom: 20px;
   
@@ -61,8 +66,8 @@ select {
   margin-bottom: 10px;
 }
 .submit-button {
-  background-color: #007bff; /* Replace with your color */
-  color: #fff;
+  /*background-color: #007bff;*/ /* Replace with your color */
+  color: #000000;
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
@@ -70,7 +75,7 @@ select {
   transition: background-color 0.2s ease;
 }
 .submit-button:hover {
-  background-color: #0067cc; /* Darker shade on hover */
+  /*background-color: #0067cc;*/ /* Darker shade on hover */
 }
 .product-history-item {
   padding: 15px;
