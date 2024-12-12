@@ -94,10 +94,10 @@ function MainPage({}) {
                 </div>
             </div>
             <hr />
-            <div className="container-row">
+            <div className="container-row top-navbar">
                 <div className="container-row6">
                     <div className="container-row7">
-                        <h3>Username: {username}.</h3>
+                        <h4>Username: {username}.</h4>
                      </div>
                      <div className="container-row8">
                         {username !== "not logged in" ? (
