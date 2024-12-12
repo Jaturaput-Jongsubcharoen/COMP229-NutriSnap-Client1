@@ -217,7 +217,7 @@ function PredictImagePage() {
       <div className="container-row">
       <div className="decorate-main-page2">
       <div style={{ fontFamily: "Arial, sans-serif", padding: "20px" }}>
-        <h2>F O O D&nbsp;&nbsp;&nbsp;&nbsp;N U T R I T I O N A L&nbsp;&nbsp;&nbsp;&nbsp;I N F O</h2>
+        <h2>F O O D&nbsp;&nbsp;&nbsp;&nbsp;N U T R I T I O N A L&nbsp;&nbsp;&nbsp;&nbsp;I N F O : {username}</h2>
 
         <form onSubmit={handleSubmit}>
           <input

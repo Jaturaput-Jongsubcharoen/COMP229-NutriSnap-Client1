@@ -215,7 +215,7 @@ function BarcodePage() {
             <div className="container-row">
                 <div className="decorate-main-page2">
                     <div style={{ textAlign: "center", marginTop: "20px", color: "#f2f0c4" }}>
-                        <h2>F O O D&nbsp;&nbsp;&nbsp;&nbsp;B A R C O D E&nbsp;&nbsp;&nbsp;&nbsp;S C A N N E R</h2>
+                        <h2>F O O D&nbsp;&nbsp;&nbsp;&nbsp;B A R C O D E&nbsp;&nbsp;&nbsp;&nbsp;S C A N N E R : {username}</h2>
                         <h3>Upload barcode image of food to search nutrients</h3>
                         <input className="white-button" type="file" accept="image/*" onChange={handleImageUpload} style={{ marginBottom: "10px" }} />
                         <br />

@@ -173,7 +173,7 @@ const TextSearchPage = () => {
             <div className="container-row">
                 <div className="decorate-main-page2">
                     <div className="textsearch_barcode_container">
-                        <h2>T E X T&nbsp;&nbsp;&nbsp;&nbsp;S E A R C H&nbsp;&nbsp;&nbsp;&nbsp;F O R&nbsp;&nbsp;&nbsp;&nbsp;F O O D</h2>
+                        <h2>T E X T&nbsp;&nbsp;&nbsp;&nbsp;S E A R C H&nbsp;&nbsp;&nbsp;&nbsp;F O R&nbsp;&nbsp;&nbsp;&nbsp;F O O D : {username}</h2>
                         <p>Enter the name of the food to search its nutritional content</p>
                         <div className="decorate-row5">
                         <input

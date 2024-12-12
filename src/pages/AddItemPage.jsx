@@ -231,7 +231,7 @@ function Add_Item() {
       <div className="container-row">
       <div className="decorate-main-page2">
       <div className="add-item-container">
-        <h2>A D D&nbsp;&nbsp;&nbsp;&nbsp;I T E M</h2>
+        <h2>A D D&nbsp;&nbsp;&nbsp;&nbsp;I T E M : {username}</h2>
         <div className="add-item-form-container">
           
           <form onSubmit={submit}>
