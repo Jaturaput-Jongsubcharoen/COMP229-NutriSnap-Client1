@@ -16,7 +16,7 @@ function HistoryPage() {
     //username
     const fetchUsername = async () => {
         try {
-            const token = localStorage.getItem("token"); // Get the token from localStorage
+            const token = localStorage.getItem("token"); 
 
             if (!token) {
                 console.error("No token found, user might not be logged in.");
@@ -26,7 +26,7 @@ function HistoryPage() {
             const response = await fetch(`${import.meta.env.VITE_BE_URL}/getUser`, {
                 method: "GET",
                 headers: {
-                    Authorization: `Bearer ${token}`, // Include token in the Authorization header
+                    Authorization: `Bearer ${token}`,
                 },
             });
 
@@ -63,7 +63,7 @@ function HistoryPage() {
             console.log('VITE_BE_URL:', import.meta.env.VITE_BE_URL); // Debugging
             //------------------------------------------------------------------------------------
             //const userID = localStorage.getItem("userID"); // Get the userID from localStorage
-            const token = localStorage.getItem("token"); // Get the token to pass as Authorization header
+            const token = localStorage.getItem("token");
 
             if (!token) {
                 console.error('No token or userID found, user might not be logged in.');
@@ -133,11 +133,11 @@ function HistoryPage() {
     };
 
     const handleLoginPageClick = () => {
-        navigate('/login'); // Navigate to the LoginPage
+        navigate('/login'); 
     };
 
     const handleRegister = () => {
-        navigate('/register'); // Navigate to the Text Search for Food Page
+        navigate('/register'); 
     };
 
     return (
@@ -157,7 +157,7 @@ function HistoryPage() {
             <div className="container-row top-navbar">
                 <div className="container-row6">
                     <div className="container-row7">
-                        <h4>Username: {username}.</h4>
+                        <h4>Username: {username}</h4>
                      </div>
                      <div className="container-row8">
                         {username !== "not logged in" ? (
@@ -220,16 +220,16 @@ function HistoryPage() {
                                             <strong>Name:</strong> {item.name}
                                         </p>
                                         <p>
-                                            <strong>Calories:</strong> {item.calories}
+                                            <strong>Calories:</strong> {item.calories} kilocalories
                                         </p>
                                         <p>
-                                            <strong>Protein:</strong> {item.protein}
+                                            <strong>Protein:</strong> {item.protein} grams
                                         </p>
                                         <p>
-                                            <strong>Fat:</strong> {item.fat}
+                                            <strong>Fat:</strong> {item.fat} grams
                                         </p>
                                         <p>
-                                            <strong>Carbohydrates:</strong> {item.carbohydrates}
+                                            <strong>Carbohydrates:</strong> {item.carbohydrates} grams
                                         </p>
                                         <p>
                                             <strong>Meal Type:</strong> {item.mealType}

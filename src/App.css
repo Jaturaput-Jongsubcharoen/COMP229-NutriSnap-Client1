@@ -180,6 +180,7 @@ body {
   justify-content: center;
   align-items: center;
   width: 100%;
+  gap: 10px;
 }
 
 .container-row6 {
@@ -390,7 +391,6 @@ body {
   text-align: Center;
   margin-top: 20px;
   /*color: #f2f0c4;*/
-  color: #ffffff;
 }
 
 .table_NI {
