@@ -13,7 +13,7 @@ const Register = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
 
-    const response = await fetch('http://localhost:8080/register', {
+    const response = await fetch(`${import.meta.env.VITE_BE_URL}/register`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -22,7 +22,7 @@ const Register = () => {
     });
 
     if (response.ok) {
-      navigate('/'); // Redirect to login page after registration
+      navigate('/login');
     } else {
       const errorMessage = await response.text();
       setError(errorMessage);
@@ -48,6 +48,7 @@ const Register = () => {
           <h2>Welcome New User</h2>
           <form onSubmit={handleRegister}>
             <input
+              style={{ width: "94%" }}
               type="text"
               placeholder="Username"
               value={username}
@@ -55,6 +56,7 @@ const Register = () => {
               required
             />
             <input
+              style={{ width: "94%" }}
               type="email"
               placeholder="Email"
               value={email}
@@ -62,6 +64,7 @@ const Register = () => {
               required
             />
             <input
+              style={{ width: "94%" }}
               type="password"
               placeholder="Password"
               value={password}

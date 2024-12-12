@@ -195,7 +195,7 @@ function PredictImagePage() {
       <div className="container-row top-navbar">
         <div className="container-row6">
           <div className="container-row7">
-            <h4>Username: {username}.</h4>
+            <h4>Username: {username}</h4>
           </div>
           <div className="container-row8">
             {username !== "not logged in" ? (
@@ -214,9 +214,10 @@ function PredictImagePage() {
         </div>
       </div>
       <br />
-
+      <div className="container-row">
+      <div className="decorate-main-page2">
       <div style={{ fontFamily: "Arial, sans-serif", padding: "20px" }}>
-        <h1>Food Nutritional Info</h1>
+        <h2>F O O D&nbsp;&nbsp;&nbsp;&nbsp;N U T R I T I O N A L&nbsp;&nbsp;&nbsp;&nbsp;I N F O : {username}</h2>
 
         <form onSubmit={handleSubmit}>
           <input
@@ -321,6 +322,8 @@ function PredictImagePage() {
           </div>
         )
       }
+      </div>
+      </div>
     </>
   );
 }

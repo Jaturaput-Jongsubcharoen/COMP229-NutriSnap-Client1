@@ -209,7 +209,7 @@ function Add_Item() {
           <div className="container-row top-navbar">
                 <div className="container-row6">
                     <div className="container-row7">
-                        <h4>Username: {username}.</h4>
+                        <h4>Username: {username}</h4>
                      </div>
                      <div className="container-row8">
                         {username !== "not logged in" ? (
@@ -231,7 +231,7 @@ function Add_Item() {
       <div className="container-row">
       <div className="decorate-main-page2">
       <div className="add-item-container">
-        <h2>A D D&nbsp;&nbsp;&nbsp;&nbsp;I T E M</h2>
+        <h2>A D D&nbsp;&nbsp;&nbsp;&nbsp;I T E M : {username}</h2>
         <div className="add-item-form-container">
           
           <form onSubmit={submit}>
@@ -312,7 +312,7 @@ function Add_Item() {
               
             
             </div>
-            <button type="submit" className="submit-button">
+            <button type="submit" className="white-button">
               Submit
             </button>
           </form>

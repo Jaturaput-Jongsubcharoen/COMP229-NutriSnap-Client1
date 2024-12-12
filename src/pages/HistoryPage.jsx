@@ -133,11 +133,11 @@ function HistoryPage() {
     };
 
     const handleLoginPageClick = () => {
-        navigate('/login'); // Navigate to the LoginPage
+        navigate('/login'); 
     };
 
     const handleRegister = () => {
-        navigate('/register'); // Navigate to the Text Search for Food Page
+        navigate('/register'); 
     };
 
     return (
@@ -157,7 +157,7 @@ function HistoryPage() {
             <div className="container-row top-navbar">
                 <div className="container-row6">
                     <div className="container-row7">
-                        <h4>Username: {username}.</h4>
+                        <h4>Username: {username}</h4>
                      </div>
                      <div className="container-row8">
                         {username !== "not logged in" ? (
