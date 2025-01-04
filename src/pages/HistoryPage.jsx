@@ -16,7 +16,7 @@ function HistoryPage() {
     //username
     const fetchUsername = async () => {
         try {
-            const token = localStorage.getItem("token"); // Get the token from localStorage
+            const token = localStorage.getItem("token");
 
             if (!token) {
                 console.error("No token found, user might not be logged in.");
@@ -26,7 +26,7 @@ function HistoryPage() {
             const response = await fetch(`${import.meta.env.VITE_BE_URL}/getUser`, {
                 method: "GET",
                 headers: {
-                    Authorization: `Bearer ${token}`, // Include token in the Authorization header
+                    Authorization: `Bearer ${token}`,
                 },
             });
 
@@ -63,7 +63,7 @@ function HistoryPage() {
             console.log('VITE_BE_URL:', import.meta.env.VITE_BE_URL); // Debugging
             //------------------------------------------------------------------------------------
             //const userID = localStorage.getItem("userID"); // Get the userID from localStorage
-            const token = localStorage.getItem("token"); // Get the token to pass as Authorization header
+            const token = localStorage.getItem("token"); 
 
             if (!token) {
                 console.error('No token or userID found, user might not be logged in.');
@@ -74,7 +74,7 @@ function HistoryPage() {
                 //------------------------------------------------------------------------------------
                 method: 'GET',
                 headers: {
-                  'Authorization': `Bearer ${token}`, // Add the token here
+                  'Authorization': `Bearer ${token}`, 
                 },
                 //------------------------------------------------------------------------------------
             });
