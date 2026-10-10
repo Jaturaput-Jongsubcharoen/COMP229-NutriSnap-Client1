@@ -24,3 +24,29 @@ dist-ssr
 *.sw?
 
 .env
+
+# Python and Robot Framework test artifacts
+**/.venv/
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+tests/robot/output.xml
+tests/robot/report.html
+tests/robot/log.html
+tests/robot/screenshots/
+tests/robot/artifacts/
+*.png
+.env
+.env.*
+!.env.example
+
+
+# Robot Framework reports
+tests/robot/artifacts/
+
+# Python cache
+__pycache__/
+*.pyc
