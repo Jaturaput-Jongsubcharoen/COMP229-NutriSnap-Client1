@@ -1,0 +1,18 @@
+:root[data-theme='light'] {
+  color-scheme: light;
+  --background: #f5f5ee;
+  --surface: #ffffff;
+  --surface-raised: #e4e9db;
+  --text: #171d16;
+  --muted: #5c6656;
+  --accent: #526f22;
+  --on-accent: #ffffff;
+  --border: #c9d1c0;
+  --subtle: #e4e9db;
+  --danger: #a22c25;
+  --danger-surface: #ffebe7;
+  --success: #405b18;
+  --macro-2: #667b51;
+  --macro-3: #80845a;
+  --overlay: #171d1680;
+}

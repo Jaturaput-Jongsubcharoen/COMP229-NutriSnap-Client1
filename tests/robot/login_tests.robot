@@ -11,7 +11,7 @@ ${MAIN_PAGE_URL}   http://localhost:5173/main-page
 ${USERNAME_INPUT}  css=input[placeholder="Username"]
 ${PASSWORD_INPUT}  css=input[placeholder="Password"]
 ${LOGIN_BUTTON}    xpath=//button[@type="submit" and normalize-space(.)="Login"]
-${ERROR_MESSAGE}   css=form p[style*="color: red"]
+${ERROR_MESSAGE}   css=form [role="alert"]
 
 *** Test Cases ***
 Login Page Loads Successfully

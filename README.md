@@ -204,3 +204,9 @@ Notes:
 - Backend repo: https://github.com/Jaturaput-Jongsubcharoen/COM229-NutriSnap-Server1
 
 
+
+## Frontend Design And Technical Documentation
+
+- [Design system](DESIGN.md): themes, typography, components, accessibility, and responsive behavior.
+- [Frontend architecture](ARCHITECTURE.md): folder structure, routing, component responsibilities, and data flow.
+- [API integration](API_INTEGRATION.md): request contracts, authentication, configuration, and verification.

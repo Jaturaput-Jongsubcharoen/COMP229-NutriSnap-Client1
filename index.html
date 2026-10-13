@@ -2,9 +2,33 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
+    <link rel="icon" type="image/png" href="/src/images/logo1.png" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <meta
+      name="description"
+      content="NutriSnap — your nutrition workspace. Search food, scan barcodes, and keep track of the energy behind your everyday."
+    />
+    <script>
+      try {
+        var preference = localStorage.getItem('nutrisnap-theme');
+        document.documentElement.dataset.theme =
+          preference === 'light' || preference === 'dark'
+            ? preference
+            : matchMedia('(prefers-color-scheme: dark)').matches
+              ? 'dark'
+              : 'light';
+      } catch (_) {
+        document.documentElement.dataset.theme = matchMedia(
+          '(prefers-color-scheme: dark)'
+        ).matches
+          ? 'dark'
+          : 'light';
+      }
+    </script>
+    <title>NutriSnap — Fuel Your Everyday</title>
   </head>
   <body>
     <div id="root"></div>
