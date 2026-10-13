@@ -1,6 +1,6 @@
 # Nutri-Kcal Frontend
 
-![Nutri-Kcal Live Demo Screenshot](docs/live-demo-screenshot.png)
+![Nutri-Kcal Live Demo Screenshot](docs/live-demo-screenshot2.png)
 
 React frontend for Nutri-Kcal (NutriSnap), a nutrition management web application where users can search food nutrition by text, scan barcode images, get AI-assisted estimates, save entries, and review history.
 
